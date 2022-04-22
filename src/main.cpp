@@ -9,7 +9,6 @@ int main(int argc, char** argv) {
   auto s3 = std::make_shared<calculator::Scalar>(2);
   auto ad_sub = std::make_shared<calculator::Fraction>(s2, s3);
   auto mul = calculator::Fraction(s1, ad_sub);
-  std::cout << mul << std::endl;
-  std::cout << *(mul.evaluate()) << std::endl;
+  std::cout << mul << " = " << *(mul.evaluate()) << std::endl;
   return 0;
 }
