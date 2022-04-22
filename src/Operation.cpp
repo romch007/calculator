@@ -1,5 +1,6 @@
 #include <Operation.hpp>
 #include <Scalar.hpp>
+#include <utils.hpp>
 
 namespace calculator {
 

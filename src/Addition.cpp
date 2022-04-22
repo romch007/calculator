@@ -1,5 +1,6 @@
 #include <Addition.hpp>
 #include <Scalar.hpp>
+#include <utils.hpp>
 
 namespace calculator {
 
@@ -18,10 +19,16 @@ namespace calculator {
     auto second_den = dynamic_cast<Scalar*>(second->den().get())->value();
 
     auto new_num = m_difference ? first_num * second_den - first_den * second_num : first_num * second_den + first_den * second_num;
+    auto new_den = first_den * second_den;
+
+    int div = calculator::gcd(new_num, new_den);
+
+    new_num /= div;
+    new_den /= div;
 
     return std::make_shared<Fraction>(
       std::make_shared<Scalar>(new_num),
-      std::make_shared<Scalar>(first_den * second_den)
+      std::make_shared<Scalar>(new_den)
     );
   }
 }
