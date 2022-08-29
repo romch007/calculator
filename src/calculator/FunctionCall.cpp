@@ -2,8 +2,7 @@
 #include <cmath>
 
 namespace calculator::Ast {
-  FunctionCall::FunctionCall(FunctionCall::FunctionType type,
-                             ExpressionPtr argument)
+  FunctionCall::FunctionCall(FunctionType type, ExpressionPtr argument)
       : functionType(type), argument(std::move(argument)) {}
 
   double FunctionCall::Compute(Context& context) const {
@@ -11,6 +10,10 @@ namespace calculator::Ast {
     switch (functionType) {
       case FunctionType::Sin:
         return std::sin(argumentValue);
+      case FunctionType::Cos:
+        return std::cos(argumentValue);
+      case FunctionType::Tan:
+        return std::tan(argumentValue);
     }
   }
 }  // namespace calculator::Ast

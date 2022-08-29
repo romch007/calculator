@@ -6,8 +6,6 @@
 #include <calculator/Ast/Expression.hpp>
 #include <calculator/Prerequisites.hpp>
 
-#include "calculator/Context.hpp"
-
 namespace calculator::Ast {
   class FunctionCall;
 
@@ -15,8 +13,6 @@ namespace calculator::Ast {
 
   class FunctionCall : public Expression {
    public:
-    enum class FunctionType { Sin, Cos, Tan };
-
     FunctionCall(FunctionType type, ExpressionPtr argument);
     FunctionCall(const FunctionCall &) = delete;
     FunctionCall(FunctionCall &&) noexcept = default;

@@ -27,7 +27,7 @@ namespace calculator {
     Ast::ExpressionPtr expression;
 
     // Use ternary?
-    if (Peek().type == TokenType::Const)
+    if (Peek().type == TokenType::Const || Peek().type == TokenType::Let)
       expression = ParseAssignment();
     else
       expression = ParseExpression();
@@ -40,14 +40,23 @@ namespace calculator {
   }
 
   Ast::AssignmentPtr Parser::ParseAssignment() {
-    Consume();
+    const Token &keyword = Advance();
+    Ast::AssignmentType assignmentType;
+    switch (keyword.type) {
+      case TokenType::Let:
+        assignmentType = Ast::AssignmentType::Mutable;
+        break;
+      case TokenType::Const:
+        assignmentType = Ast::AssignmentType::Constant;
+        break;
+    }
     const Token &identifier = Advance();
     if (identifier.type == TokenType::Identifier) {
       auto variableName = std::get<std::string_view>(identifier.data);
       if (Advance().type == TokenType::Equal) {
         auto content = ParseExpression();
-        return std::make_unique<Ast::Assignment>(variableName,
-                                                 std::move(content), true);
+        return std::make_unique<Ast::Assignment>(
+            variableName, std::move(content), assignmentType);
       } else {
         throw std::runtime_error("expected equal sign");
       }
@@ -60,15 +69,15 @@ namespace calculator {
     auto expression = ParseTerm();
     for (;;) {
       const Token &token = Peek();
-      Ast::BinaryOperation::BinaryOpType opType;
+      Ast::BinaryOpType opType;
 
       bool invalid = false;
       switch (token.type) {
         case TokenType::Add:
-          opType = Ast::BinaryOperation::BinaryOpType::Add;
+          opType = Ast::BinaryOpType::Add;
           break;
         case TokenType::Substract:
-          opType = Ast::BinaryOperation::BinaryOpType::Substract;
+          opType = Ast::BinaryOpType::Substract;
           break;
         default:
           invalid = true;
@@ -95,15 +104,15 @@ namespace calculator {
 
     for (;;) {
       const Token &token = Peek();
-      Ast::BinaryOperation::BinaryOpType opType;
+      Ast::BinaryOpType opType;
 
       bool invalid = false;
       switch (token.type) {
         case TokenType::Multiply:
-          opType = Ast::BinaryOperation::BinaryOpType::Multiply;
+          opType = Ast::BinaryOpType::Multiply;
           break;
         case TokenType::Divide:
-          opType = Ast::BinaryOperation::BinaryOpType::Divide;
+          opType = Ast::BinaryOpType::Divide;
           break;
         default:
           invalid = true;
@@ -127,8 +136,8 @@ namespace calculator {
 
     if (token.type == TokenType::Exponent) {
       Consume();
-      auto exponent = std::make_unique<Ast::BinaryOperation>(
-          Ast::BinaryOperation::BinaryOpType::Exponent);
+      auto exponent =
+          std::make_unique<Ast::BinaryOperation>(Ast::BinaryOpType::Exponent);
       exponent->lhs = std::move(factor);
       exponent->rhs = ParseFactor();
       factor = std::move(exponent);
@@ -169,7 +178,7 @@ namespace calculator {
       case TokenType::Substract:
         Consume();
         exponent = std::make_unique<Ast::UnaryOperation>(
-            Ast::UnaryOperation::UnaryOpType::Negate, ParseExponent());
+            Ast::UnaryOpType::Negate, ParseExponent());
         break;
       default:
         throw std::runtime_error("invalid token");
@@ -188,14 +197,13 @@ namespace calculator {
         MatchFunctionType(identifierText), std::move(argument));
   }
 
-  Ast::FunctionCall::FunctionType Parser::MatchFunctionType(
-      std::string_view identifier) {
+  Ast::FunctionType Parser::MatchFunctionType(std::string_view identifier) {
     if (identifier == "sin") {
-      return Ast::FunctionCall::FunctionType::Sin;
+      return Ast::FunctionType::Sin;
     } else if (identifier == "cos") {
-      return Ast::FunctionCall::FunctionType::Cos;
+      return Ast::FunctionType::Cos;
     } else if (identifier == "tan") {
-      return Ast::FunctionCall::FunctionType::Tan;
+      return Ast::FunctionType::Tan;
     }
     throw std::runtime_error("unknown function '" + std::string(identifier) +
                              "'");

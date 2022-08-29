@@ -1,4 +1,5 @@
 #include <fast_float/fast_float.h>
+
 #include <calculator/Lexer.hpp>
 #include <cctype>
 #include <charconv>
@@ -129,12 +130,14 @@ namespace calculator {
         case 'z': {
           std::size_t fnNameStart = currentPos;
 
-          while (isalpha(Peek()))
-            currentPos++;
+          while (isalpha(Peek())) currentPos++;
 
-          std::string_view name = str.substr(fnNameStart, currentPos - fnNameStart + 1);
+          std::string_view name =
+              str.substr(fnNameStart, currentPos - fnNameStart + 1);
           if (name == "const") {
             tokenType = TokenType::Const;
+          } else if (name == "let") {
+            tokenType = TokenType::Let;
           } else {
             tokenType = TokenType::Identifier;
             token.data = name;

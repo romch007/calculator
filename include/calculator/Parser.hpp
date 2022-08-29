@@ -7,6 +7,7 @@
 #include <calculator/Ast/Expression.hpp>
 #include <calculator/Ast/FunctionCall.hpp>
 #include <calculator/Ast/Number.hpp>
+#include <calculator/Enums.hpp>
 #include <calculator/Lexer.hpp>
 #include <calculator/Prerequisites.hpp>
 
@@ -30,7 +31,7 @@ namespace calculator {
     Ast::ExpressionPtr ParseFactor();
     Ast::ExpressionPtr ParseExponent();
     Ast::NumberPtr ParseNumber();
-    [[nodiscard]] static Ast::FunctionCall::FunctionType MatchFunctionType(
+    [[nodiscard]] static Ast::FunctionType MatchFunctionType(
         std::string_view identifier);
 
     struct ParserContext {

@@ -15,10 +15,6 @@ namespace calculator::Ast {
 
   class UnaryOperation : public Expression {
    public:
-    enum class UnaryOpType {
-      Negate,
-    };
-
     UnaryOperation(UnaryOpType op, ExpressionPtr operand);
     UnaryOperation(const UnaryOperation &) = delete;
     UnaryOperation(UnaryOperation &&) noexcept = default;

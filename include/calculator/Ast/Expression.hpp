@@ -3,19 +3,17 @@
 #ifndef CALCULATOR_EXPRESSION_HPP
 #define CALCULATOR_EXPRESSION_HPP
 
+#include <calculator/Context.hpp>
+#include <calculator/Enums.hpp>
 #include <calculator/Prerequisites.hpp>
 #include <memory>
 #include <string>
-
-#include "calculator/Context.hpp"
 
 namespace calculator::Ast {
 
   class Expression;
 
   using ExpressionPtr = std::unique_ptr<Expression>;
-
-  enum class ExpressionType { Operation, Literal };
 
   class Expression {
    public:

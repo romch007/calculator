@@ -17,8 +17,6 @@ namespace calculator::Ast {
 
   class BinaryOperation : public Expression {
    public:
-    enum class BinaryOpType { Add, Substract, Multiply, Divide, Exponent };
-
     explicit BinaryOperation(BinaryOpType op);
     BinaryOperation(const BinaryOperation &) = delete;
     BinaryOperation(BinaryOperation &&) noexcept = default;

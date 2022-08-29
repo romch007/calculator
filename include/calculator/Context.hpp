@@ -3,6 +3,7 @@
 #ifndef CALCULATOR_CONTEXT_HPP
 #define CALCULATOR_CONTEXT_HPP
 
+#include <calculator/Enums.hpp>
 #include <calculator/Prerequisites.hpp>
 #include <string>
 #include <unordered_map>
@@ -23,8 +24,8 @@ namespace calculator {
 
     double Evaluate(const std::string &input);
 
-    void AddVariable(std::string variableName, double value,
-                     bool constant = false);
+    void SetVariable(std::string variableName, double value,
+                     Ast::AssignmentType assignmentType);
     double GetVariable(const std::string &variableName) const;
 
    private:

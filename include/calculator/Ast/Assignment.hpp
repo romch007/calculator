@@ -16,7 +16,7 @@ namespace calculator::Ast {
   class Assignment : public Expression {
    public:
     Assignment(std::string_view variableName, ExpressionPtr content,
-               bool constant);
+               AssignmentType assignmentType);
     Assignment(const Assignment &) = delete;
     Assignment(Assignment &&) noexcept = default;
     ~Assignment() = default;
@@ -29,7 +29,7 @@ namespace calculator::Ast {
 
     std::string_view variableName;
     ExpressionPtr content;
-    bool constant;
+    AssignmentType assignmentType;
   };
 
   inline ExpressionType Assignment::GetType() const {

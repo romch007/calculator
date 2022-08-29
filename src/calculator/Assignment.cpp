@@ -1,17 +1,16 @@
 #include <calculator/Ast/Assignment.hpp>
 
-#include "calculator/Context.hpp"
-
 namespace calculator::Ast {
   Assignment::Assignment(std::string_view variableName, ExpressionPtr content,
-                         bool constant)
+                         AssignmentType assignmentType)
       : variableName(variableName),
         content(std::move(content)),
-        constant(constant) {}
+        assignmentType(assignmentType) {}
 
   double Assignment::Compute(Context& context) const {
     auto contentValue = content->Compute(context);
-    context.AddVariable(std::string(variableName), contentValue, constant);
+    context.SetVariable(std::string(variableName), contentValue,
+                        assignmentType);
     return contentValue;
   }
 }  // namespace calculator::Ast

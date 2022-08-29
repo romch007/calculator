@@ -15,12 +15,16 @@ namespace calculator {
     return ast->Compute(*this);
   }
 
-  void Context::AddVariable(std::string variableName, double value,
-                            bool constant) {
-    if (constant && m_variables.contains(variableName)) {
+  void Context::SetVariable(std::string variableName, double value,
+                            Ast::AssignmentType assignmentType) {
+    if (assignmentType == Ast::AssignmentType::Constant &&
+        m_variables.contains(variableName)) {
       throw std::runtime_error("attempting to mutate a constant variable");
+    } else if (assignmentType == Ast::AssignmentType::Existing &&
+               !m_variables.contains(variableName)) {
+      throw std::runtime_error("variable '" + variableName + "' not found");
     }
-    m_variables.insert({std::move(variableName), value});
+    m_variables.insert_or_assign(std::move(variableName), value);
   }
 
   double Context::GetVariable(const std::string &variableName) const {
