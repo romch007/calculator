@@ -7,7 +7,7 @@
 #include <string>
 
 namespace calculator {
-CALCULATOR_API double Evaluate(const std::string &input);
+  CALCULATOR_API double Evaluate(const std::string &input);
 }
 
 #endif
