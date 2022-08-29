@@ -22,8 +22,6 @@ namespace calculator {
     };
 
     std::vector<Token> Tokenise(std::string_view str);
-    const char* ToString(TokenType tokenType);
-    std::string ToString(const std::vector<Token>& tokens, bool pretty = true);
 }
 
 #endif

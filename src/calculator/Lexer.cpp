@@ -3,7 +3,6 @@
 #include <cctype>
 #include <charconv>
 #include <stdexcept>
-#include <sstream>
 #include <fast_float/fast_float.h>
 
 namespace calculator {
