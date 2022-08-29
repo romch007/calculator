@@ -149,13 +149,7 @@ namespace calculator {
         auto identifierText = std::get<std::string_view>(token.data);
         Consume();
         if (Peek().type == TokenType::OpenParenthesis) {
-          Consume();
-          // Function call
-          auto argument = ParseExpression();
-          if (Advance().type != TokenType::CloseParenthesis)
-            throw std::runtime_error("expected ')'");
-          exponent = std::make_unique<Ast::FunctionCall>(
-              MatchFunctionType(identifierText), std::move(argument));
+          exponent = ParseFunctionCall(identifierText);
         } else {
           // Simple variable
           exponent = std::make_unique<Ast::Variable>(identifierText);
@@ -183,6 +177,17 @@ namespace calculator {
 
     return exponent;
   }
+
+  Ast::FunctionCallPtr Parser::ParseFunctionCall(
+      std::string_view identifierText) {
+    Consume();
+    auto argument = ParseExpression();
+    if (Advance().type != TokenType::CloseParenthesis)
+      throw std::runtime_error("expected ')'");
+    return std::make_unique<Ast::FunctionCall>(
+        MatchFunctionType(identifierText), std::move(argument));
+  }
+
   Ast::FunctionCall::FunctionType Parser::MatchFunctionType(
       std::string_view identifier) {
     if (identifier == "sin") {

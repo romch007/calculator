@@ -24,6 +24,7 @@ namespace calculator {
     const Token &Peek(std::size_t advance = 0);
 
     Ast::AssignmentPtr ParseAssignment();
+    Ast::FunctionCallPtr ParseFunctionCall(std::string_view identifierText);
     Ast::ExpressionPtr ParseExpression();
     Ast::ExpressionPtr ParseTerm();
     Ast::ExpressionPtr ParseFactor();
