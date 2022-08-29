@@ -11,7 +11,7 @@ namespace calculator::Ast {
 
   double Assignment::Compute(Context& context) const {
     auto contentValue = content->Compute(context);
-    context.AddVariable(variableName, contentValue);
+    context.AddVariable(std::string(variableName), contentValue, constant);
     return contentValue;
   }
 }  // namespace calculator::Ast

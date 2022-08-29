@@ -23,11 +23,12 @@ namespace calculator {
 
     double Evaluate(const std::string &input);
 
-    void AddVariable(std::string_view variableName, double value);
-    double GetVariable(std::string_view variableName);
+    void AddVariable(std::string variableName, double value,
+                     bool constant = false);
+    double GetVariable(const std::string &variableName) const;
 
    private:
-    std::unordered_map<std::string_view, double> m_variables;
+    std::unordered_map<std::string, double> m_variables;
   };
 }  // namespace calculator
 
