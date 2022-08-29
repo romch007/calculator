@@ -137,6 +137,10 @@ namespace calculator {
         if (Advance().type != TokenType::CloseParenthesis)
           throw std::runtime_error("expected ')'");
         break;
+      case TokenType::Add:
+        Consume();
+        exponent = ParseExpression();
+        break;
       case TokenType::Substract:
         Consume();
         exponent = std::make_unique<Ast::UnaryOperation>(
