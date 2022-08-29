@@ -7,6 +7,8 @@
 #include <calculator/Prerequisites.hpp>
 #include <memory>
 
+#include "calculator/Context.hpp"
+
 namespace calculator::Ast {
 
   class BinaryOperation;
@@ -26,8 +28,7 @@ namespace calculator::Ast {
     BinaryOperation &operator=(BinaryOperation &&) noexcept = default;
 
     [[nodiscard]] inline ExpressionType GetType() const override;
-    [[nodiscard]] std::string ToString() const override;
-    [[nodiscard]] double Compute() const override;
+    [[nodiscard]] double Compute(Context &context) const override;
 
     BinaryOpType operationType;
     ExpressionPtr rhs;

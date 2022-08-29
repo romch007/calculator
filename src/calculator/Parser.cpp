@@ -1,5 +1,6 @@
 #include <calculator/Ast/BinaryOperation.hpp>
 #include <calculator/Ast/UnaryOperation.hpp>
+#include <calculator/Ast/Variable.hpp>
 #include <calculator/Parser.hpp>
 #include <stdexcept>
 
@@ -17,19 +18,42 @@ namespace calculator {
   }
 
   Ast::ExpressionPtr Parser::Parse(const std::vector<Token> &tokens) {
-    Context context;
+    ParserContext context;
     context.tokenCount = tokens.size();
     context.tokens = tokens.data();
 
     m_context = &context;
 
-    auto expression = ParseExpression();
+    Ast::ExpressionPtr expression;
+
+    // Use ternary?
+    if (Peek().type == TokenType::Const)
+      expression = ParseAssignment();
+    else
+      expression = ParseExpression();
 
     const Token &nextToken = Peek();
     if (nextToken.type != TokenType::EOL)
       throw std::runtime_error("extra inputs at end of line");
 
     return expression;
+  }
+
+  Ast::AssignmentPtr Parser::ParseAssignment() {
+    Consume();
+    const Token &identifier = Advance();
+    if (identifier.type == TokenType::Identifier) {
+      auto variableName = std::get<std::string_view>(identifier.data);
+      if (Advance().type == TokenType::Equal) {
+        auto content = ParseExpression();
+        return std::make_unique<Ast::Assignment>(variableName,
+                                                 std::move(content), true);
+      } else {
+        throw std::runtime_error("expected equal sign");
+      }
+    } else {
+      throw std::runtime_error("expected identifier");
+    }
   }
 
   Ast::ExpressionPtr Parser::ParseExpression() {
@@ -122,13 +146,20 @@ namespace calculator {
         exponent = ParseNumber();
         break;
       case TokenType::Identifier: {
+        auto identifierText = std::get<std::string_view>(token.data);
         Consume();
-        if (Advance().type != TokenType::OpenParenthesis)
-          throw std::runtime_error("expected '('");
-        auto argument = ParseExpression();
-        if (Advance().type != TokenType::CloseParenthesis)
-          throw std::runtime_error("expected ')'");
-        exponent = std::make_unique<Ast::FunctionCall>(MatchFunctionType(std::get<std::string_view>(token.data)), std::move(argument));
+        if (Peek().type == TokenType::OpenParenthesis) {
+          Consume();
+          // Function call
+          auto argument = ParseExpression();
+          if (Advance().type != TokenType::CloseParenthesis)
+            throw std::runtime_error("expected ')'");
+          exponent = std::make_unique<Ast::FunctionCall>(
+              MatchFunctionType(identifierText), std::move(argument));
+        } else {
+          // Simple variable
+          exponent = std::make_unique<Ast::Variable>(identifierText);
+        }
         break;
       }
       case TokenType::OpenParenthesis:
@@ -161,7 +192,8 @@ namespace calculator {
     } else if (identifier == "tan") {
       return Ast::FunctionCall::FunctionType::Tan;
     }
-    throw std::runtime_error("unknown function '" + std::string(identifier) + "'");
+    throw std::runtime_error("unknown function '" + std::string(identifier) +
+                             "'");
   }
 
 }  // namespace calculator

@@ -3,9 +3,10 @@
 #ifndef CALCULATOR_PARSER_HPP
 #define CALCULATOR_PARSER_HPP
 
+#include <calculator/Ast/Assignment.hpp>
 #include <calculator/Ast/Expression.hpp>
-#include <calculator/Ast/Number.hpp>
 #include <calculator/Ast/FunctionCall.hpp>
+#include <calculator/Ast/Number.hpp>
 #include <calculator/Lexer.hpp>
 #include <calculator/Prerequisites.hpp>
 
@@ -22,20 +23,22 @@ namespace calculator {
     void Consume(std::size_t count = 1);
     const Token &Peek(std::size_t advance = 0);
 
+    Ast::AssignmentPtr ParseAssignment();
     Ast::ExpressionPtr ParseExpression();
     Ast::ExpressionPtr ParseTerm();
     Ast::ExpressionPtr ParseFactor();
     Ast::ExpressionPtr ParseExponent();
     Ast::NumberPtr ParseNumber();
-    [[nodiscard]] static Ast::FunctionCall::FunctionType MatchFunctionType(std::string_view identifier) ;
+    [[nodiscard]] static Ast::FunctionCall::FunctionType MatchFunctionType(
+        std::string_view identifier);
 
-    struct Context {
+    struct ParserContext {
       std::size_t tokenCount;
       std::size_t tokenIndex = 0;
       const Token *tokens;
     };
 
-    Context *m_context;
+    ParserContext *m_context;
   };
 }  // namespace calculator
 

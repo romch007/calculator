@@ -28,8 +28,7 @@ namespace calculator::Ast {
     UnaryOperation &operator=(UnaryOperation &&) noexcept = default;
 
     [[nodiscard]] inline ExpressionType GetType() const override;
-    [[nodiscard]] std::string ToString() const override;
-    [[nodiscard]] double Compute() const override;
+    [[nodiscard]] double Compute(Context &context) const override;
 
     UnaryOpType operationType;
     ExpressionPtr operand;

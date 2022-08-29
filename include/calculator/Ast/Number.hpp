@@ -22,20 +22,19 @@ namespace calculator::Ast {
     Number &operator=(const Number &) = delete;
     Number &operator=(Number &&) noexcept = default;
 
-    inline explicit Number(double initial_value);
+    inline explicit Number(double initialValue);
 
     [[nodiscard]] inline ExpressionType GetType() const override;
-    [[nodiscard]] std::string ToString() const override;
-    [[nodiscard]] double Compute() const override;
+    [[nodiscard]] double Compute(Context &context) const override;
 
     double value{0.0};
   };
 
   inline ExpressionType Number::GetType() const {
-    return ExpressionType::Number;
+    return ExpressionType::Literal;
   }
 
-  inline Number::Number(double initial_value) : value(initial_value) {}
+  inline Number::Number(double initialValue) : value(initialValue) {}
 }  // namespace calculator::Ast
 
 #endif

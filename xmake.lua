@@ -1,6 +1,6 @@
 add_rules("mode.debug", "mode.release", "mode.asan", "mode.valgrind", "mode.lsan")
 
-set_languages("c++17")
+set_languages("c++20")
 
 add_requires("fast_float")
 

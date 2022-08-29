@@ -4,14 +4,6 @@
 namespace calculator::Ast {
   BinaryOperation::BinaryOperation(BinaryOpType op) : operationType(op) {}
 
-  std::string BinaryOperation::ToString() const {
-    std::string result = "Operation(op: " + GetOpSymbol() + ",\n";
-    result += lhs->ToString() + "\n";
-    result += rhs->ToString() + "\n";
-    result += ")";
-    return result;
-  }
-
   std::string BinaryOperation::GetOpSymbol() const {
     switch (operationType) {
       case BinaryOpType::Add:
@@ -27,9 +19,9 @@ namespace calculator::Ast {
     }
   }
 
-  double BinaryOperation::Compute() const {
-    auto leftValue = lhs->Compute();
-    auto rightValue = rhs->Compute();
+  double BinaryOperation::Compute(Context& context) const {
+    auto leftValue = lhs->Compute(context);
+    auto rightValue = rhs->Compute(context);
     switch (operationType) {
       case BinaryOpType::Add:
         return leftValue + rightValue;

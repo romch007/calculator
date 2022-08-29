@@ -54,6 +54,9 @@ namespace calculator {
         case ')':
           tokenType = TokenType::CloseParenthesis;
           break;
+        case '=':
+          tokenType = TokenType::Equal;
+          break;
         case '0':
         case '1':
         case '2':
@@ -130,9 +133,12 @@ namespace calculator {
             currentPos++;
 
           std::string_view name = str.substr(fnNameStart, currentPos - fnNameStart + 1);
-
-          tokenType = TokenType::Identifier;
-          token.data = name;
+          if (name == "const") {
+            tokenType = TokenType::Const;
+          } else {
+            tokenType = TokenType::Identifier;
+            token.data = name;
+          }
           break;
         }
         default:
