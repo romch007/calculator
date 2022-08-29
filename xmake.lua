@@ -12,10 +12,10 @@ target("calculator")
     add_packages("fast_float", "fmt")
 
     on_load(function (target)
-		if target:kind() == "static" then
-			target:add("defines", "CALCULATOR_STATIC", { public = true })
-		end
-	end)
+        if target:kind() == "static" then
+            target:add("defines", "CALCULATOR_STATIC", { public = true })
+        end
+    end)
 
 target("repl")
     set_kind("binary")
