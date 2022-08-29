@@ -161,7 +161,7 @@ namespace calculator {
     } else if (identifier == "tan") {
       return Ast::FunctionCall::FunctionType::Tan;
     }
-    throw std::runtime_error("unknown function");
+    throw std::runtime_error("unknown function '" + std::string(identifier) + "'");
   }
 
 }  // namespace calculator
