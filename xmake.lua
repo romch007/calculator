@@ -2,7 +2,7 @@ add_rules("mode.debug", "mode.release", "mode.asan", "mode.valgrind", "mode.lsan
 
 set_languages("c++17")
 
-add_requires("fast_float", "fmt")
+add_requires("fast_float")
 
 target("calculator")
     set_kind("$(kind)")
