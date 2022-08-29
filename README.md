@@ -15,3 +15,4 @@ You can run the REPL version with `xmake run repl`
 * Basic operations (`+`,`-`,`*`,`/`)
 * Power (`^`)
 * Parenthesis
+* Functions (`sin`, `cos`, `tan`)

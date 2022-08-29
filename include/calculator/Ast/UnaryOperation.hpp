@@ -19,26 +19,19 @@ namespace calculator::Ast {
       Negate,
     };
 
-    UnaryOperation(UnaryOpType op, Ast::ExpressionPtr operand);
-
+    UnaryOperation(UnaryOpType op, ExpressionPtr operand);
     UnaryOperation(const UnaryOperation &) = delete;
-
     UnaryOperation(UnaryOperation &&) noexcept = default;
-
     ~UnaryOperation() = default;
 
     UnaryOperation &operator=(const UnaryOperation &) = delete;
-
     UnaryOperation &operator=(UnaryOperation &&) noexcept = default;
 
     [[nodiscard]] inline ExpressionType GetType() const override;
-
     [[nodiscard]] std::string ToString() const override;
-
     [[nodiscard]] double Compute() const override;
 
     UnaryOpType operationType;
-
     ExpressionPtr operand;
 
    private:

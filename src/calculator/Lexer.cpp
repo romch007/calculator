@@ -1,8 +1,8 @@
 #include <fast_float/fast_float.h>
-
 #include <calculator/Lexer.hpp>
 #include <cctype>
 #include <charconv>
+#include <optional>
 #include <stdexcept>
 #include <string_view>
 
@@ -96,6 +96,44 @@ namespace calculator {
             throw std::runtime_error("number out of range");
           else
             throw std::runtime_error("bad number");
+          break;
+        }
+        case 'a':
+        case 'b':
+        case 'c':
+        case 'd':
+        case 'e':
+        case 'f':
+        case 'g':
+        case 'h':
+        case 'i':
+        case 'j':
+        case 'k':
+        case 'l':
+        case 'm':
+        case 'n':
+        case 'o':
+        case 'p':
+        case 'q':
+        case 'r':
+        case 's':
+        case 't':
+        case 'u':
+        case 'v':
+        case 'w':
+        case 'x':
+        case 'y':
+        case 'z': {
+          std::size_t fnNameStart = currentPos;
+
+          while (isalpha(Peek()))
+            currentPos++;
+
+          std::string_view name = str.substr(fnNameStart, currentPos - fnNameStart + 1);
+
+          tokenType = TokenType::Identifier;
+          token.data = name;
+          break;
         }
         default:
           break;

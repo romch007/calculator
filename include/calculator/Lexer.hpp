@@ -4,7 +4,7 @@
 #define CALCULATOR_LEXER_HPP
 
 #include <calculator/Prerequisites.hpp>
-#include <optional>
+#include <variant>
 #include <string_view>
 #include <vector>
 
@@ -18,7 +18,7 @@ namespace calculator {
 
   struct Token {
     TokenType type;
-    std::optional<double> data;
+    std::variant<double, std::string_view> data;
   };
 
   std::vector<Token> Tokenise(std::string_view str);

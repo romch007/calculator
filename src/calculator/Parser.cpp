@@ -63,7 +63,7 @@ namespace calculator {
 
   Ast::NumberPtr Parser::ParseNumber() {
     const Token &nextToken = Advance();
-    return std::make_unique<Ast::Number>(*nextToken.data);
+    return std::make_unique<Ast::Number>(std::get<double>(nextToken.data));
   }
 
   Ast::ExpressionPtr Parser::ParseTerm() {
@@ -121,6 +121,16 @@ namespace calculator {
       case TokenType::Number:
         exponent = ParseNumber();
         break;
+      case TokenType::Identifier: {
+        Consume();
+        if (Advance().type != TokenType::OpenParenthesis)
+          throw std::runtime_error("expected '('");
+        auto argument = ParseExpression();
+        if (Advance().type != TokenType::CloseParenthesis)
+          throw std::runtime_error("expected ')'");
+        exponent = std::make_unique<Ast::FunctionCall>(MatchFunctionType(std::get<std::string_view>(token.data)), std::move(argument));
+        break;
+      }
       case TokenType::OpenParenthesis:
         Consume();
         exponent = ParseExpression();
@@ -137,6 +147,17 @@ namespace calculator {
     }
 
     return exponent;
+  }
+  Ast::FunctionCall::FunctionType Parser::MatchFunctionType(
+      std::string_view identifier) {
+    if (identifier == "sin") {
+      return Ast::FunctionCall::FunctionType::Sin;
+    } else if (identifier == "cos") {
+      return Ast::FunctionCall::FunctionType::Cos;
+    } else if (identifier == "tan") {
+      return Ast::FunctionCall::FunctionType::Tan;
+    }
+    throw std::runtime_error("unknown function");
   }
 
 }  // namespace calculator
