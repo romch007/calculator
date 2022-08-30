@@ -2,7 +2,7 @@ add_rules("mode.debug", "mode.release")
 
 set_languages("c++20")
 
-add_requires("fast_float")
+add_requires("fast_float", "fmt")
 
 add_headerfiles("examples/*.calc")
 
@@ -13,7 +13,7 @@ target("calculator")
     add_headerfiles("include/(calculator/**.hpp)")
     add_includedirs("include", { public = true })
     add_files("src/calculator/**.cpp")
-    add_packages("fast_float")
+    add_packages("fast_float", "fmt")
 
     on_load(function (target)
         if target:kind() == "static" then
@@ -35,3 +35,4 @@ target("eval")
 
 
 includes("tests/xmake.lua")
+includes("xmake/**.lua")

@@ -17,12 +17,14 @@ namespace calculator {
     Parser() = default;
     ~Parser() = default;
 
-    Ast::ExpressionPtr Parse(const std::vector<Token> &tokens);
+    Ast::ExpressionPtr Parse(const std::vector<Token>& tokens);
 
    private:
-    const Token &Advance();
+    const Token& Advance();
     void Consume(std::size_t count = 1);
-    const Token &Peek(std::size_t advance = 0);
+    const Token& Peek(std::size_t advance = 0);
+    const Token& Expect(const Token& token, TokenType tokenType);
+    const Token& Expect(TokenType tokenType);
 
     Ast::AssignmentPtr ParseAssignment();
     Ast::FunctionCallPtr ParseFunctionCall(std::string_view identifierText);
@@ -37,10 +39,10 @@ namespace calculator {
     struct ParserContext {
       std::size_t tokenCount;
       std::size_t tokenIndex = 0;
-      const Token *tokens;
+      const Token* tokens;
     };
 
-    ParserContext *m_context;
+    ParserContext* m_context;
   };
 }  // namespace calculator
 

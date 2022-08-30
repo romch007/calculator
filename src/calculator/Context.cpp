@@ -4,12 +4,12 @@
 #include <stdexcept>
 
 namespace calculator {
-  double Evaluate(const std::string &input) {
+  double Evaluate(const std::string& input) {
     Context c;
     return c.Evaluate(input);
   }
 
-  double Context::Evaluate(const std::string &input) {
+  double Context::Evaluate(const std::string& input) {
     auto tokens = Tokenise(input);
     Parser parser{};
     auto ast = parser.Parse(tokens);
@@ -28,7 +28,7 @@ namespace calculator {
     m_variables.insert_or_assign(std::move(variableName), value);
   }
 
-  double Context::GetVariable(const std::string &variableName) const {
+  double Context::GetVariable(const std::string& variableName) const {
     if (!m_variables.contains(variableName))
       throw std::runtime_error("variable '" + variableName + "' not found");
     return m_variables.at(variableName);

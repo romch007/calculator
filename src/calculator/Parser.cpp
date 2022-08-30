@@ -1,3 +1,5 @@
+#include <fmt/core.h>
+
 #include <calculator/Ast/BinaryOperation.hpp>
 #include <calculator/Ast/UnaryOperation.hpp>
 #include <calculator/Ast/Variable.hpp>
@@ -5,19 +7,35 @@
 #include <stdexcept>
 
 namespace calculator {
-  const Token &Parser::Advance() {
-    const Token &token = Peek();
+  const Token& Parser::Advance() {
+    const Token& token = Peek();
     m_context->tokenIndex++;
     return token;
   }
 
-  void Parser::Consume(std::size_t count) { m_context->tokenIndex += count; }
+  void Parser::Consume(std::size_t count) {
+    m_context->tokenIndex += count;
+  }
 
-  const Token &Parser::Peek(std::size_t advance) {
+  const Token& Parser::Peek(std::size_t advance) {
     return m_context->tokens[m_context->tokenIndex + advance];
   }
 
-  Ast::ExpressionPtr Parser::Parse(const std::vector<Token> &tokens) {
+  const Token& Parser::Expect(const Token& token, TokenType tokenType) {
+    if (token.type != tokenType)
+      throw std::runtime_error(fmt::format("expected {} but found {}",
+                                           ToString(tokenType),
+                                           ToString(token.type)));
+    return token;
+  }
+
+  const Token& Parser::Expect(TokenType tokenType) {
+    const Token& token = Peek();
+    Expect(token, tokenType);
+    return token;
+  }
+
+  Ast::ExpressionPtr Parser::Parse(const std::vector<Token>& tokens) {
     ParserContext context;
     context.tokenCount = tokens.size();
     context.tokens = tokens.data();
@@ -32,7 +50,7 @@ namespace calculator {
     else
       expression = ParseExpression();
 
-    const Token &nextToken = Peek();
+    const Token& nextToken = Peek();
     if (nextToken.type != TokenType::EOL)
       throw std::runtime_error("extra inputs at end of line");
 
@@ -40,7 +58,7 @@ namespace calculator {
   }
 
   Ast::AssignmentPtr Parser::ParseAssignment() {
-    const Token &keyword = Advance();
+    const Token& keyword = Advance();
     Ast::AssignmentType assignmentType;
     switch (keyword.type) {
       case TokenType::Let:
@@ -50,25 +68,19 @@ namespace calculator {
         assignmentType = Ast::AssignmentType::Constant;
         break;
     }
-    const Token &identifier = Advance();
-    if (identifier.type == TokenType::Identifier) {
-      auto variableName = std::get<std::string_view>(identifier.data);
-      if (Advance().type == TokenType::Equal) {
-        auto content = ParseExpression();
-        return std::make_unique<Ast::Assignment>(
-            variableName, std::move(content), assignmentType);
-      } else {
-        throw std::runtime_error("expected equal sign");
-      }
-    } else {
-      throw std::runtime_error("expected identifier");
-    }
+    const Token& identifier = Expect(Advance(), TokenType::Identifier);
+    auto variableName = std::get<std::string_view>(identifier.data);
+
+    Expect(Advance(), TokenType::Equal);
+    auto content = ParseExpression();
+    return std::make_unique<Ast::Assignment>(variableName, std::move(content),
+                                             assignmentType);
   }
 
   Ast::ExpressionPtr Parser::ParseExpression() {
     auto expression = ParseTerm();
     for (;;) {
-      const Token &token = Peek();
+      const Token& token = Peek();
       Ast::BinaryOpType opType;
 
       bool invalid = false;
@@ -95,7 +107,7 @@ namespace calculator {
   }
 
   Ast::NumberPtr Parser::ParseNumber() {
-    const Token &nextToken = Advance();
+    const Token& nextToken = Advance();
     return std::make_unique<Ast::Number>(std::get<double>(nextToken.data));
   }
 
@@ -103,7 +115,7 @@ namespace calculator {
     auto term = ParseFactor();
 
     for (;;) {
-      const Token &token = Peek();
+      const Token& token = Peek();
       Ast::BinaryOpType opType;
 
       bool invalid = false;
@@ -132,7 +144,7 @@ namespace calculator {
 
   Ast::ExpressionPtr Parser::ParseFactor() {
     auto factor = ParseExponent();
-    const Token &token = Peek();
+    const Token& token = Peek();
 
     if (token.type == TokenType::Exponent) {
       Consume();
@@ -148,7 +160,7 @@ namespace calculator {
 
   Ast::ExpressionPtr Parser::ParseExponent() {
     Ast::ExpressionPtr exponent;
-    const Token &token = Peek();
+    const Token& token = Peek();
 
     switch (token.type) {
       case TokenType::Number:
@@ -168,8 +180,7 @@ namespace calculator {
       case TokenType::OpenParenthesis:
         Consume();
         exponent = ParseExpression();
-        if (Advance().type != TokenType::CloseParenthesis)
-          throw std::runtime_error("expected ')'");
+        Expect(Advance(), TokenType::CloseParenthesis);
         break;
       case TokenType::Add:
         Consume();
@@ -191,8 +202,7 @@ namespace calculator {
       std::string_view identifierText) {
     Consume();
     auto argument = ParseExpression();
-    if (Advance().type != TokenType::CloseParenthesis)
-      throw std::runtime_error("expected ')'");
+    Expect(Advance(), TokenType::CloseParenthesis);
     return std::make_unique<Ast::FunctionCall>(
         MatchFunctionType(identifierText), std::move(argument));
   }

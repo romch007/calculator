@@ -16,16 +16,16 @@ namespace calculator::Ast {
    public:
     Variable() = default;
     ~Variable() override = default;
-    Variable(const Variable &) = delete;
-    Variable(Variable &&) noexcept = default;
+    Variable(const Variable&) = delete;
+    Variable(Variable&&) noexcept = default;
 
-    Variable &operator=(const Variable &) = delete;
-    Variable &operator=(Variable &&) noexcept = default;
+    Variable& operator=(const Variable&) = delete;
+    Variable& operator=(Variable&&) noexcept = default;
 
     inline explicit Variable(std::string_view variableName);
 
     [[nodiscard]] inline ExpressionType GetType() const override;
-    [[nodiscard]] double Compute(Context &context) const override;
+    [[nodiscard]] double Compute(Context& context) const override;
 
     std::string_view variableName;
   };
@@ -35,7 +35,8 @@ namespace calculator::Ast {
   }
 
   inline Variable::Variable(std::string_view variableName)
-      : variableName(variableName) {}
+      : variableName(variableName) {
+  }
 }  // namespace calculator::Ast
 
 #endif

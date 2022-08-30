@@ -4,8 +4,8 @@
 #define CALCULATOR_LEXER_HPP
 
 #include <calculator/Prerequisites.hpp>
-#include <variant>
 #include <string_view>
+#include <variant>
 #include <vector>
 
 namespace calculator {
@@ -22,6 +22,7 @@ namespace calculator {
   };
 
   std::vector<Token> Tokenise(std::string_view str);
+  const char* ToString(TokenType tokenType);
 }  // namespace calculator
 
 #endif

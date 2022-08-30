@@ -17,15 +17,15 @@ namespace calculator::Ast {
    public:
     Assignment(std::string_view variableName, ExpressionPtr content,
                AssignmentType assignmentType);
-    Assignment(const Assignment &) = delete;
-    Assignment(Assignment &&) noexcept = default;
+    Assignment(const Assignment&) = delete;
+    Assignment(Assignment&&) noexcept = default;
     ~Assignment() = default;
 
-    Assignment &operator=(const Assignment &) = delete;
-    Assignment &operator=(Assignment &&) noexcept = default;
+    Assignment& operator=(const Assignment&) = delete;
+    Assignment& operator=(Assignment&&) noexcept = default;
 
     [[nodiscard]] inline ExpressionType GetType() const override;
-    [[nodiscard]] double Compute(Context &context) const override;
+    [[nodiscard]] double Compute(Context& context) const override;
 
     std::string_view variableName;
     ExpressionPtr content;

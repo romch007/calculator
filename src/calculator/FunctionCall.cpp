@@ -3,7 +3,8 @@
 
 namespace calculator::Ast {
   FunctionCall::FunctionCall(FunctionType type, ExpressionPtr argument)
-      : functionType(type), argument(std::move(argument)) {}
+      : functionType(type), argument(std::move(argument)) {
+  }
 
   double FunctionCall::Compute(Context& context) const {
     auto argumentValue = argument->Compute(context);

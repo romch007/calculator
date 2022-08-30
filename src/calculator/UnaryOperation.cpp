@@ -5,7 +5,8 @@
 
 namespace calculator::Ast {
   UnaryOperation::UnaryOperation(UnaryOpType op, Ast::ExpressionPtr operand)
-      : operationType(op), operand(std::move(operand)) {}
+      : operationType(op), operand(std::move(operand)) {
+  }
 
   std::string UnaryOperation::GetOpSymbol() const {
     switch (operationType) {

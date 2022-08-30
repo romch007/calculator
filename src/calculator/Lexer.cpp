@@ -87,8 +87,8 @@ namespace calculator {
             currentPos++;
           }
 
-          const char *first = &str[start];
-          const char *last = first + (currentPos - start + 1);
+          const char* first = &str[start];
+          const char* last = first + (currentPos - start + 1);
 
           tokenType = TokenType::Number;
           double value;
@@ -160,6 +160,19 @@ namespace calculator {
     eol.type = TokenType::EOL;
 
     tokens.push_back(eol);
+
     return tokens;
+  }
+
+  const char* ToString(TokenType tokenType) {
+    switch (tokenType) {
+#define CALCULATOR_TOKEN(X) \
+  case TokenType::X:        \
+    return #X;
+
+#include <calculator/Lang/TokenList.hpp>
+    }
+
+    return "<Error>";
   }
 }  // namespace calculator

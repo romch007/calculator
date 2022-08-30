@@ -18,15 +18,15 @@ namespace calculator::Ast {
   class Expression {
    public:
     Expression() = default;
-    Expression(const Expression &) = delete;
-    Expression(Expression &&) noexcept = default;
+    Expression(const Expression&) = delete;
+    Expression(Expression&&) noexcept = default;
     virtual ~Expression() = default;
 
-    Expression &operator=(const Expression &) = delete;
-    Expression &operator=(Expression &&) noexcept = default;
+    Expression& operator=(const Expression&) = delete;
+    Expression& operator=(Expression&&) noexcept = default;
 
     [[nodiscard]] virtual ExpressionType GetType() const = 0;
-    [[nodiscard]] virtual double Compute(Context &context) const = 0;
+    [[nodiscard]] virtual double Compute(Context& context) const = 0;
   };
 }  // namespace calculator::Ast
 

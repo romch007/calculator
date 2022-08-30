@@ -16,16 +16,16 @@ namespace calculator::Ast {
    public:
     Number() = default;
     ~Number() override = default;
-    Number(const Number &) = delete;
-    Number(Number &&) noexcept = default;
+    Number(const Number&) = delete;
+    Number(Number&&) noexcept = default;
 
-    Number &operator=(const Number &) = delete;
-    Number &operator=(Number &&) noexcept = default;
+    Number& operator=(const Number&) = delete;
+    Number& operator=(Number&&) noexcept = default;
 
     inline explicit Number(double initialValue);
 
     [[nodiscard]] inline ExpressionType GetType() const override;
-    [[nodiscard]] double Compute(Context &context) const override;
+    [[nodiscard]] double Compute(Context& context) const override;
 
     double value{0.0};
   };
@@ -34,7 +34,8 @@ namespace calculator::Ast {
     return ExpressionType::Literal;
   }
 
-  inline Number::Number(double initialValue) : value(initialValue) {}
+  inline Number::Number(double initialValue) : value(initialValue) {
+  }
 }  // namespace calculator::Ast
 
 #endif

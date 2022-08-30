@@ -5,7 +5,8 @@ namespace calculator::Ast {
                          AssignmentType assignmentType)
       : variableName(variableName),
         content(std::move(content)),
-        assignmentType(assignmentType) {}
+        assignmentType(assignmentType) {
+  }
 
   double Assignment::Compute(Context& context) const {
     auto contentValue = content->Compute(context);

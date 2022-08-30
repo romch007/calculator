@@ -2,7 +2,8 @@
 #include <cmath>
 
 namespace calculator::Ast {
-  BinaryOperation::BinaryOperation(BinaryOpType op) : operationType(op) {}
+  BinaryOperation::BinaryOperation(BinaryOpType op) : operationType(op) {
+  }
 
   std::string BinaryOperation::GetOpSymbol() const {
     switch (operationType) {
