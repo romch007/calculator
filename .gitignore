@@ -9,3 +9,4 @@ build/
 .idea
 cmake-build-debug
 CMakeLists.txt
+vsxmake*

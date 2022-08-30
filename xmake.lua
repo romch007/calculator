@@ -6,6 +6,7 @@ add_requires("fast_float")
 
 target("calculator")
     set_kind("$(kind)")
+    add_defines("CALCULATOR_BUILD")
     add_headerfiles("include/(calculator/**.hpp)")
     add_includedirs("include", { public = true })
     add_files("src/calculator/**.cpp")

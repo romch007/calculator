@@ -19,10 +19,16 @@
 #error "Platform not supported"
 #endif
 
-#ifdef CALCULATOR_STATIC
-#define CALCULATOR_API CALCULATOR_IMPORT
+#if !defined(CALCULATOR_STATIC)
+  #ifdef CALCULATOR_BUILD
+    #define CALCULATOR_API CALCULATOR_EXPORT
 #else
-#define CALCULATOR_API CALCULATOR_EXPORT
+    #define CALCULATOR_API CALCULATOR_IMPORT
+  #endif
+#else
+  #define CALCULATOR_API
 #endif
+
+
 
 #endif

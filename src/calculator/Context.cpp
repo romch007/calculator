@@ -1,6 +1,7 @@
 #include <calculator/Context.hpp>
 #include <calculator/Lexer.hpp>
 #include <calculator/Parser.hpp>
+#include <stdexcept>
 
 namespace calculator {
   double Evaluate(const std::string &input) {
