@@ -18,15 +18,14 @@ namespace calculator::Ast {
   class BinaryOperation : public Expression {
    public:
     explicit BinaryOperation(BinaryOpType op);
-    BinaryOperation(const BinaryOperation &) = delete;
-    BinaryOperation(BinaryOperation &&) noexcept = default;
+    BinaryOperation(const BinaryOperation&) = delete;
+    BinaryOperation(BinaryOperation&&) noexcept = default;
     ~BinaryOperation() = default;
 
-    BinaryOperation &operator=(const BinaryOperation &) = delete;
-    BinaryOperation &operator=(BinaryOperation &&) noexcept = default;
+    BinaryOperation& operator=(const BinaryOperation&) = delete;
+    BinaryOperation& operator=(BinaryOperation&&) noexcept = default;
 
-    [[nodiscard]] inline ExpressionType GetType() const override;
-    [[nodiscard]] double Compute(Context &context) const override;
+    [[nodiscard]] double Compute(Context& context) const override;
 
     BinaryOpType operationType;
     ExpressionPtr rhs;
@@ -35,10 +34,6 @@ namespace calculator::Ast {
    private:
     [[nodiscard]] std::string GetOpSymbol() const;
   };
-
-  inline ExpressionType BinaryOperation::GetType() const {
-    return ExpressionType::Operation;
-  }
 }  // namespace calculator::Ast
 
 #endif

@@ -14,22 +14,17 @@ namespace calculator::Ast {
   class FunctionCall : public Expression {
    public:
     FunctionCall(FunctionType type, ExpressionPtr argument);
-    FunctionCall(const FunctionCall &) = delete;
-    FunctionCall(FunctionCall &&) noexcept = default;
+    FunctionCall(const FunctionCall&) = delete;
+    FunctionCall(FunctionCall&&) noexcept = default;
 
-    FunctionCall &operator=(const FunctionCall &) = delete;
-    FunctionCall &operator=(FunctionCall &&) noexcept = default;
+    FunctionCall& operator=(const FunctionCall&) = delete;
+    FunctionCall& operator=(FunctionCall&&) noexcept = default;
 
-    [[nodiscard]] inline ExpressionType GetType() const override;
-    [[nodiscard]] double Compute(Context &context) const override;
+    [[nodiscard]] double Compute(Context& context) const override;
 
     FunctionType functionType;
     ExpressionPtr argument;
   };
-
-  inline ExpressionType FunctionCall::GetType() const {
-    return ExpressionType::Operation;
-  }
 }  // namespace calculator::Ast
 
 #endif

@@ -4,16 +4,17 @@
 #include <stdexcept>
 
 namespace calculator {
-  double Evaluate(const std::string& input) {
+  void Evaluate(const std::string& input) {
     Context c;
-    return c.Evaluate(input);
+    c.Execute(input);
   }
 
-  double Context::Evaluate(const std::string& input) {
+  void Context::Execute(const std::string& input) {
     auto tokens = Tokenise(input);
+    if (tokens.size() <= 1) throw std::runtime_error("no token");
     Parser parser{};
     auto ast = parser.Parse(tokens);
-    return ast->Compute(*this);
+    ast->Execute(*this);
   }
 
   void Context::SetVariable(std::string variableName, double value,

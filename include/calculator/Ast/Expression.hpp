@@ -25,7 +25,6 @@ namespace calculator::Ast {
     Expression& operator=(const Expression&) = delete;
     Expression& operator=(Expression&&) noexcept = default;
 
-    [[nodiscard]] virtual ExpressionType GetType() const = 0;
     [[nodiscard]] virtual double Compute(Context& context) const = 0;
   };
 }  // namespace calculator::Ast

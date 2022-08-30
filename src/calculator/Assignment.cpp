@@ -8,10 +8,9 @@ namespace calculator::Ast {
         assignmentType(assignmentType) {
   }
 
-  double Assignment::Compute(Context& context) const {
+  void Assignment::Execute(Context& context) const {
     auto contentValue = content->Compute(context);
     context.SetVariable(std::string(variableName), contentValue,
                         assignmentType);
-    return contentValue;
   }
 }  // namespace calculator::Ast

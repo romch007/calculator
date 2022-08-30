@@ -4,6 +4,7 @@
 #define CALCULATOR_ASSIGNMENT_HPP
 
 #include <calculator/Ast/Expression.hpp>
+#include <calculator/Ast/Node.hpp>
 #include <calculator/Prerequisites.hpp>
 #include <memory>
 
@@ -13,7 +14,7 @@ namespace calculator::Ast {
 
   using AssignmentPtr = std::unique_ptr<Assignment>;
 
-  class Assignment : public Expression {
+  class Assignment : public Node {
    public:
     Assignment(std::string_view variableName, ExpressionPtr content,
                AssignmentType assignmentType);
@@ -24,17 +25,12 @@ namespace calculator::Ast {
     Assignment& operator=(const Assignment&) = delete;
     Assignment& operator=(Assignment&&) noexcept = default;
 
-    [[nodiscard]] inline ExpressionType GetType() const override;
-    [[nodiscard]] double Compute(Context& context) const override;
+    void Execute(Context& context) const override;
 
     std::string_view variableName;
     ExpressionPtr content;
     AssignmentType assignmentType;
   };
-
-  inline ExpressionType Assignment::GetType() const {
-    return ExpressionType::Operation;
-  }
 }  // namespace calculator::Ast
 
 #endif

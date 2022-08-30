@@ -18,11 +18,6 @@ namespace calculator::Ast {
     Exponent
   };
 
-  enum class ExpressionType {
-    Operation,
-    Literal
-  };
-
   enum class FunctionType {
     Sin,
     Cos,

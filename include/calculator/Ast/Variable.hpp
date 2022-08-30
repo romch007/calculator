@@ -24,15 +24,10 @@ namespace calculator::Ast {
 
     inline explicit Variable(std::string_view variableName);
 
-    [[nodiscard]] inline ExpressionType GetType() const override;
     [[nodiscard]] double Compute(Context& context) const override;
 
     std::string_view variableName;
   };
-
-  inline ExpressionType Variable::GetType() const {
-    return ExpressionType::Literal;
-  }
 
   inline Variable::Variable(std::string_view variableName)
       : variableName(variableName) {

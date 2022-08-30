@@ -6,7 +6,9 @@
 #include <calculator/Ast/Assignment.hpp>
 #include <calculator/Ast/Expression.hpp>
 #include <calculator/Ast/FunctionCall.hpp>
+#include <calculator/Ast/Node.hpp>
 #include <calculator/Ast/Number.hpp>
+#include <calculator/Ast/Output.hpp>
 #include <calculator/Enums.hpp>
 #include <calculator/Lexer.hpp>
 #include <calculator/Prerequisites.hpp>
@@ -17,7 +19,7 @@ namespace calculator {
     Parser() = default;
     ~Parser() = default;
 
-    Ast::ExpressionPtr Parse(const std::vector<Token>& tokens);
+    Ast::NodePtr Parse(const std::vector<Token>& tokens);
 
    private:
     const Token& Advance();
@@ -27,6 +29,7 @@ namespace calculator {
     const Token& Expect(TokenType tokenType);
 
     Ast::AssignmentPtr ParseAssignment();
+    Ast::OutputPtr ParseOutput();
     Ast::FunctionCallPtr ParseFunctionCall(std::string_view identifierText);
     Ast::ExpressionPtr ParseExpression();
     Ast::ExpressionPtr ParseTerm();

@@ -35,26 +35,33 @@ namespace calculator {
     return token;
   }
 
-  Ast::ExpressionPtr Parser::Parse(const std::vector<Token>& tokens) {
+  Ast::NodePtr Parser::Parse(const std::vector<Token>& tokens) {
     ParserContext context;
     context.tokenCount = tokens.size();
     context.tokens = tokens.data();
 
     m_context = &context;
 
-    Ast::ExpressionPtr expression;
+    Ast::NodePtr node;
 
-    // Use ternary?
-    if (Peek().type == TokenType::Const || Peek().type == TokenType::Let)
-      expression = ParseAssignment();
-    else
-      expression = ParseExpression();
+    const Token& firstToken = Peek();
+
+    switch (firstToken.type) {
+      case TokenType::Const:
+      case TokenType::Let:
+        node = ParseAssignment();
+        break;
+      case TokenType::Output: {
+        node = ParseOutput();
+        break;
+      }
+    }
 
     const Token& nextToken = Peek();
     if (nextToken.type != TokenType::EOL)
       throw std::runtime_error("extra inputs at end of line");
 
-    return expression;
+    return node;
   }
 
   Ast::AssignmentPtr Parser::ParseAssignment() {
@@ -75,6 +82,12 @@ namespace calculator {
     auto content = ParseExpression();
     return std::make_unique<Ast::Assignment>(variableName, std::move(content),
                                              assignmentType);
+  }
+
+  Ast::OutputPtr Parser::ParseOutput() {
+    Consume();
+    auto outputContent = ParseExpression();
+    return std::make_unique<Ast::Output>(std::move(outputContent));
   }
 
   Ast::ExpressionPtr Parser::ParseExpression() {

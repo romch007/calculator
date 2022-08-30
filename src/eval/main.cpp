@@ -8,11 +8,9 @@ int main(int argc, char** argv) {
   std::ifstream file(argv[1]);
 
   std::string line;
-  double result;
   while (std::getline(file, line)) {
-    result = context.Evaluate(line);
+    context.Execute(line);
   }
-  std::cout << result << std::endl;
 
   return 0;
 }

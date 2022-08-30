@@ -16,15 +16,14 @@ namespace calculator::Ast {
   class UnaryOperation : public Expression {
    public:
     UnaryOperation(UnaryOpType op, ExpressionPtr operand);
-    UnaryOperation(const UnaryOperation &) = delete;
-    UnaryOperation(UnaryOperation &&) noexcept = default;
+    UnaryOperation(const UnaryOperation&) = delete;
+    UnaryOperation(UnaryOperation&&) noexcept = default;
     ~UnaryOperation() = default;
 
-    UnaryOperation &operator=(const UnaryOperation &) = delete;
-    UnaryOperation &operator=(UnaryOperation &&) noexcept = default;
+    UnaryOperation& operator=(const UnaryOperation&) = delete;
+    UnaryOperation& operator=(UnaryOperation&&) noexcept = default;
 
-    [[nodiscard]] inline ExpressionType GetType() const override;
-    [[nodiscard]] double Compute(Context &context) const override;
+    [[nodiscard]] double Compute(Context& context) const override;
 
     UnaryOpType operationType;
     ExpressionPtr operand;
@@ -32,10 +31,6 @@ namespace calculator::Ast {
    private:
     [[nodiscard]] std::string GetOpSymbol() const;
   };
-
-  inline ExpressionType UnaryOperation::GetType() const {
-    return ExpressionType::Operation;
-  }
 }  // namespace calculator::Ast
 
 #endif

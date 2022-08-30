@@ -24,15 +24,10 @@ namespace calculator::Ast {
 
     inline explicit Number(double initialValue);
 
-    [[nodiscard]] inline ExpressionType GetType() const override;
     [[nodiscard]] double Compute(Context& context) const override;
 
     double value{0.0};
   };
-
-  inline ExpressionType Number::GetType() const {
-    return ExpressionType::Literal;
-  }
 
   inline Number::Number(double initialValue) : value(initialValue) {
   }
