@@ -1,4 +1,4 @@
-const pi = 3.141
 const test = 999
--> (6 + 4) * sin(pi) - test
--> pi * test
+const result = (6 + 4) * sin(PI) - test
+-> result
+-> PI * test

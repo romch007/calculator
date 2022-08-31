@@ -9,12 +9,17 @@ namespace calculator {
     c.Execute(input);
   }
 
+  Context::Context() {
+    m_variables.insert({"PI", std::numbers::pi});
+    m_variables.insert({"E", std::numbers::e});
+  }
+
   void Context::Execute(const std::string& input) {
     auto tokens = Tokenise(input);
     if (tokens.size() <= 1) throw std::runtime_error("no token");
     Parser parser{};
     auto ast = parser.Parse(tokens);
-    ast->Execute(*this);
+    if (ast) ast->Execute(*this);
   }
 
   void Context::SetVariable(std::string variableName, double value,

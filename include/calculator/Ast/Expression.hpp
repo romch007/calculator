@@ -15,6 +15,9 @@ namespace calculator::Ast {
 
   using ExpressionPtr = std::unique_ptr<Expression>;
 
+  /**
+   * A generic computable expression
+   */
   class Expression {
    public:
     Expression() = default;
@@ -25,6 +28,11 @@ namespace calculator::Ast {
     Expression& operator=(const Expression&) = delete;
     Expression& operator=(Expression&&) noexcept = default;
 
+    /**
+     * Compute the expression
+     * @param context The execution context
+     * @return The result
+     */
     [[nodiscard]] virtual double Compute(Context& context) const = 0;
   };
 }  // namespace calculator::Ast

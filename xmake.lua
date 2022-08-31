@@ -2,6 +2,9 @@ add_rules("mode.debug", "mode.release")
 
 set_languages("c++20")
 
+set_rundir("./build/$(plat)_$(arch)_$(mode)")
+set_targetdir("./build/$(plat)_$(arch)_$(mode)")
+
 add_requires("fast_float", "fmt")
 
 add_headerfiles("examples/*.calc")

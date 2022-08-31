@@ -9,6 +9,7 @@
 #include <calculator/Ast/Node.hpp>
 #include <calculator/Ast/Number.hpp>
 #include <calculator/Ast/Output.hpp>
+#include <calculator/Ast/Root.hpp>
 #include <calculator/Enums.hpp>
 #include <calculator/Lexer.hpp>
 #include <calculator/Prerequisites.hpp>
@@ -19,7 +20,7 @@ namespace calculator {
     Parser() = default;
     ~Parser() = default;
 
-    Ast::NodePtr Parse(const std::vector<Token>& tokens);
+    Ast::RootPtr Parse(const std::vector<Token>& tokens);
 
    private:
     const Token& Advance();

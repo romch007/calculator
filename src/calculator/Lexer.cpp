@@ -26,7 +26,11 @@ namespace calculator {
       char c = Peek(0);
 
       Token token;
-      if (c == '\0') break;
+      if (c == '\0') {
+        token.type = TokenType::EndOfStream;
+        tokens.push_back(token);
+        break;
+      }
 
       std::optional<TokenType> tokenType;
       switch (c) {
@@ -34,6 +38,9 @@ namespace calculator {
         case '\t':
         case '\r':
           break;  // Ignore blanks
+        case '\n':
+          tokenType = TokenType::Newline;
+          break;
         case '+':
           tokenType = TokenType::Add;
           break;
@@ -133,7 +140,31 @@ namespace calculator {
         case 'w':
         case 'x':
         case 'y':
-        case 'z': {
+        case 'A':
+        case 'B':
+        case 'C':
+        case 'D':
+        case 'E':
+        case 'F':
+        case 'G':
+        case 'H':
+        case 'I':
+        case 'J':
+        case 'K':
+        case 'L':
+        case 'M':
+        case 'N':
+        case 'O':
+        case 'P':
+        case 'Q':
+        case 'R':
+        case 'S':
+        case 'T':
+        case 'U':
+        case 'V':
+        case 'W':
+        case 'X':
+        case 'Y': {
           std::size_t fnNameStart = currentPos;
 
           while (isalpha(Peek())) currentPos++;
@@ -161,11 +192,6 @@ namespace calculator {
 
       currentPos++;
     }
-
-    Token eol;
-    eol.type = TokenType::EOL;
-
-    tokens.push_back(eol);
 
     return tokens;
   }

@@ -15,6 +15,9 @@ namespace calculator::Ast {
 
   using NodePtr = std::unique_ptr<Node>;
 
+  /**
+   * A generic Node in the AST
+   */
   class Node {
    public:
     Node() = default;
@@ -25,6 +28,10 @@ namespace calculator::Ast {
     Node& operator=(const Node&) = delete;
     Node& operator=(Node&&) noexcept = default;
 
+    /**
+     * Execute the node
+     * @param context The execution context
+     */
     virtual void Execute(Context& context) const = 0;
   };
 }  // namespace calculator::Ast

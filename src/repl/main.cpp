@@ -10,7 +10,7 @@ int main() {
   prefix();
   for (std::string line; std::getline(std::cin, line);) {
     try {
-      c.Execute(line);
+      c.Execute(line + "\n");
     } catch (std::exception& e) {
       std::cout << e.what() << std::endl;
     }

@@ -35,33 +35,35 @@ namespace calculator {
     return token;
   }
 
-  Ast::NodePtr Parser::Parse(const std::vector<Token>& tokens) {
+  Ast::RootPtr Parser::Parse(const std::vector<Token>& tokens) {
     ParserContext context;
     context.tokenCount = tokens.size();
     context.tokens = tokens.data();
 
     m_context = &context;
 
-    Ast::NodePtr node;
+    auto rootNode = std::make_unique<Ast::Root>();
 
-    const Token& firstToken = Peek();
-
-    switch (firstToken.type) {
-      case TokenType::Const:
-      case TokenType::Let:
-        node = ParseAssignment();
-        break;
-      case TokenType::Output: {
-        node = ParseOutput();
-        break;
+    do {
+      const Token& token = Peek();
+      switch (token.type) {
+        case TokenType::Const:
+        case TokenType::Let:
+          rootNode->statements.push_back(ParseAssignment());
+          break;
+        case TokenType::Output: {
+          rootNode->statements.push_back(ParseOutput());
+          break;
+        }
       }
-    }
+    } while (Advance().type == TokenType::Newline);
 
+    m_context->tokenIndex--;
     const Token& nextToken = Peek();
-    if (nextToken.type != TokenType::EOL)
-      throw std::runtime_error("extra inputs at end of line");
+    if (nextToken.type != TokenType::EndOfStream)
+      throw std::runtime_error("extra inputs at end of stream");
 
-    return node;
+    return rootNode;
   }
 
   Ast::AssignmentPtr Parser::ParseAssignment() {
@@ -214,10 +216,11 @@ namespace calculator {
   Ast::FunctionCallPtr Parser::ParseFunctionCall(
       std::string_view identifierText) {
     Consume();
-    auto argument = ParseExpression();
+    std::vector<Ast::ExpressionPtr> arguments;
+    arguments.push_back(ParseExpression());
     Expect(Advance(), TokenType::CloseParenthesis);
     return std::make_unique<Ast::FunctionCall>(
-        MatchFunctionType(identifierText), std::move(argument));
+        MatchFunctionType(identifierText), std::move(arguments));
   }
 
   Ast::FunctionType Parser::MatchFunctionType(std::string_view identifier) {

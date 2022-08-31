@@ -5,6 +5,7 @@
 
 #include <calculator/Ast/Expression.hpp>
 #include <calculator/Prerequisites.hpp>
+#include <vector>
 
 namespace calculator::Ast {
   class FunctionCall;
@@ -13,7 +14,7 @@ namespace calculator::Ast {
 
   class FunctionCall : public Expression {
    public:
-    FunctionCall(FunctionType type, ExpressionPtr argument);
+    FunctionCall(FunctionType type, std::vector<ExpressionPtr> arguments);
     FunctionCall(const FunctionCall&) = delete;
     FunctionCall(FunctionCall&&) noexcept = default;
 
@@ -23,7 +24,7 @@ namespace calculator::Ast {
     [[nodiscard]] double Compute(Context& context) const override;
 
     FunctionType functionType;
-    ExpressionPtr argument;
+    std::vector<ExpressionPtr> arguments;
   };
 }  // namespace calculator::Ast
 
