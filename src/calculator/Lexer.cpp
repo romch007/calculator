@@ -72,7 +72,7 @@ namespace calculator {
           tokenType = TokenType::Equal;
           break;
         case '#': {
-          char next = Peek();
+          char next;
           do {
             currentPos++;
             next = Peek();
