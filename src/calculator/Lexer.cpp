@@ -71,6 +71,14 @@ namespace calculator {
         case '=':
           tokenType = TokenType::Equal;
           break;
+        case '#': {
+          char next = Peek();
+          do {
+            currentPos++;
+            next = Peek();
+          } while (next != -1 && next != '\n');
+          break;
+        }
         case '0':
         case '1':
         case '2':
