@@ -6,7 +6,7 @@ void prefix() {
 }
 
 int main() {
-  calculator::Context c;
+  calculator::Context c(std::cout);
   prefix();
   for (std::string line; std::getline(std::cin, line);) {
     try {

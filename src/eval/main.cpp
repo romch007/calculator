@@ -8,7 +8,7 @@ int main(int argc, char** argv) {
     std::cout << "no file provided" << std::endl;
     return 1;
   }
-  calculator::Context context;
+  calculator::Context context(std::cout);
   std::ifstream file(argv[1]);
 
   if (file.bad()) {

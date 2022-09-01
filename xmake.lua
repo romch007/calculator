@@ -36,6 +36,15 @@ target("eval")
     add_deps("calculator")
     add_files("src/eval/*.cpp")
 
+target("editor")
+    set_kind("binary")
+    add_rules("qt.quickapp")
+    add_frameworks("QtCore", "QtGui", "QtWidgets")
+    add_deps("calculator")
+    add_files("src/editor/**.cpp")
+    add_files("src/editor/*.hpp") -- for Q_OBJECT
+    add_headerfiles("src/editor/**.hpp")
+    add_includedirs("src/editor")
 
 includes("tests/xmake.lua")
 includes("xmake/**.lua")

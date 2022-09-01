@@ -9,21 +9,22 @@
 #include <unordered_map>
 
 namespace calculator {
-  CALCULATOR_API void Evaluate(const std::string& input);
+  CALCULATOR_API void Evaluate(const std::string& input,
+                               std::ostream& outputStream);
 
   /**
    * An execution context containing current variables
    */
   class CALCULATOR_API Context {
    public:
-    Context();
+    explicit Context(std::ostream& outputStream);
     ~Context() = default;
 
     Context(const Context&) = delete;
-    Context(Context&&) noexcept = default;
+    Context(Context&&) noexcept = delete;
 
     Context& operator=(const Context&) = delete;
-    Context& operator=(Context&&) noexcept = default;
+    Context& operator=(Context&&) noexcept = delete;
 
     /**
      * Execute a given script
@@ -49,8 +50,11 @@ namespace calculator {
      */
     double GetVariable(const std::string& variableName) const;
 
+    std::ostream& GetOutputStream() const;
+
    private:
     std::unordered_map<std::string, double> m_variables;
+    std::ostream& m_outputStream;
   };
 }  // namespace calculator
 

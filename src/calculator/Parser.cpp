@@ -67,8 +67,9 @@ namespace calculator {
   }
 
   Ast::AssignmentPtr Parser::ParseAssignment() {
-    const Token& keyword = Advance();
     Ast::AssignmentType assignmentType;
+
+    const Token& keyword = Advance();
     switch (keyword.type) {
       case TokenType::Let:
         assignmentType = Ast::AssignmentType::Mutable;
@@ -77,6 +78,7 @@ namespace calculator {
         assignmentType = Ast::AssignmentType::Constant;
         break;
     }
+
     const Token& identifier = Expect(Advance(), TokenType::Identifier);
     auto variableName = std::get<std::string_view>(identifier.data);
 

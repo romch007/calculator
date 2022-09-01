@@ -7,6 +7,6 @@ namespace calculator::Ast {
 
   void Output::Execute(Context& context) const {
     auto computedValue = content->Compute(context);
-    std::cout << computedValue << std::endl;
+    context.GetOutputStream() << computedValue << std::endl;
   }
 }  // namespace calculator::Ast

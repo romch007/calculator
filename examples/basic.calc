@@ -1,7 +1,8 @@
 # Comment
-const test = 999
+let test = 999
 # Comment1
 const result = (6 + 4) * sin(PI) - test
+test = 6
 # Comment2
 -> result
 -> PI * test

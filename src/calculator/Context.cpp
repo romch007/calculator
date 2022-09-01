@@ -5,12 +5,12 @@
 #include <numbers>
 
 namespace calculator {
-  void Evaluate(const std::string& input) {
-    Context c;
+  void Evaluate(const std::string& input, std::ostream& outputStream) {
+    Context c(outputStream);
     c.Execute(input);
   }
 
-  Context::Context() {
+  Context::Context(std::ostream& outputStream) : m_outputStream(outputStream) {
     m_variables.insert({"PI", std::numbers::pi});
     m_variables.insert({"E", std::numbers::e});
   }
@@ -39,5 +39,9 @@ namespace calculator {
     if (!m_variables.contains(variableName))
       throw std::runtime_error("variable '" + variableName + "' not found");
     return m_variables.at(variableName);
+  }
+
+  std::ostream& Context::GetOutputStream() const {
+    return m_outputStream;
   }
 }  // namespace calculator
