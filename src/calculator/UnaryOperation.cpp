@@ -1,8 +1,6 @@
 #include <calculator/Ast/UnaryOperation.hpp>
 #include <cmath>
 
-#include "calculator/Context.hpp"
-
 namespace calculator::Ast {
   UnaryOperation::UnaryOperation(UnaryOpType op, Ast::ExpressionPtr operand)
       : operationType(op), operand(std::move(operand)) {
