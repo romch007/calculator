@@ -2,6 +2,7 @@
 #include <calculator/Lexer.hpp>
 #include <calculator/Parser.hpp>
 #include <stdexcept>
+#include <numbers>
 
 namespace calculator {
   void Evaluate(const std::string& input) {
