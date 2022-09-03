@@ -6,8 +6,7 @@
 namespace calculator::Ast {
   enum class AssignmentType {
     Constant,
-    Mutable,
-    Existing
+    Mutable
   };
 
   enum class BinaryOpType {

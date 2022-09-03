@@ -16,11 +16,19 @@ namespace calculator {
 #include <calculator/Lang/TokenList.hpp>
   };
 
+  /**
+   * A simple token produced by the lexer
+   */
   struct Token {
     TokenType type;
     std::variant<double, std::string_view> data;
   };
 
+  /**
+   * Transform a string into tokens
+   * @param str The input string
+   * @return The tokens
+   */
   std::vector<Token> Tokenise(std::string_view str);
   const char* ToString(TokenType tokenType);
 }  // namespace calculator

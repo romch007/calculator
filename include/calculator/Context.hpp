@@ -50,6 +50,10 @@ namespace calculator {
      */
     double GetVariable(const std::string& variableName) const;
 
+    /**
+     * Get the output stream
+     * @return The output stream
+     */
     std::ostream& GetOutputStream() const;
 
    private:

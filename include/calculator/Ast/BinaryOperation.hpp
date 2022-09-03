@@ -32,6 +32,10 @@ namespace calculator::Ast {
     ExpressionPtr lhs;
 
    private:
+    /**
+     * Get the operation symbol
+     * @return The operation symbol
+     */
     [[nodiscard]] std::string GetOpSymbol() const;
   };
 }  // namespace calculator::Ast
