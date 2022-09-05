@@ -45,12 +45,7 @@ namespace calculator {
           tokenType = TokenType::Add;
           break;
         case '-': {
-          if (Peek() == '>') {
-            tokenType = TokenType::Output;
-            currentPos++;
-          } else {
-            tokenType = TokenType::Substract;
-          }
+          tokenType = TokenType::Substract;
           break;
         }
         case '*':

@@ -25,9 +25,11 @@ namespace calculator::Ast {
     Root& operator=(const Root&) = delete;
     Root& operator=(Root&&) noexcept = default;
 
+    void AddStatement(NodePtr statement);
     void Execute(Context& context) const override;
 
-    std::vector<NodePtr> statements;
+   private:
+    std::vector<NodePtr> m_statements;
   };
 }  // namespace calculator::Ast
 

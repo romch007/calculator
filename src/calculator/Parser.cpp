@@ -49,10 +49,10 @@ namespace calculator {
       switch (token.type) {
         case TokenType::Const:
         case TokenType::Let:
-          rootNode->statements.push_back(ParseAssignment());
+          rootNode->AddStatement(ParseAssignment());
           break;
-        case TokenType::Output: {
-          rootNode->statements.push_back(ParseOutput());
+        default: {
+          rootNode->AddStatement(ParseOutput());
           break;
         }
       }
@@ -89,7 +89,6 @@ namespace calculator {
   }
 
   Ast::OutputPtr Parser::ParseOutput() {
-    Consume();
     auto outputContent = ParseExpression();
     return std::make_unique<Ast::Output>(std::move(outputContent));
   }

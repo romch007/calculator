@@ -1,6 +1,6 @@
 add_rules("mode.debug", "mode.release")
 
-set_languages("c++20")
+set_languages("cxx20")
 
 set_rundir("./build/$(plat)_$(arch)_$(mode)")
 set_targetdir("./build/$(plat)_$(arch)_$(mode)")
@@ -38,6 +38,7 @@ target("eval")
 
 target("editor")
     set_kind("binary")
+    set_group("Executables")
     add_rules("qt.quickapp")
     add_frameworks("QtCore", "QtGui", "QtWidgets")
     add_deps("calculator")
@@ -45,6 +46,9 @@ target("editor")
     add_files("src/editor/*.hpp") -- for Q_OBJECT
     add_headerfiles("src/editor/**.hpp")
     add_includedirs("src/editor")
+    if is_plat("windows") then
+        add_cxxflags("/Zc:__cplusplus")
+    end
 
 includes("tests/xmake.lua")
 includes("xmake/**.lua")

@@ -57,8 +57,16 @@ namespace calculator {
     std::ostream& GetOutputStream() const;
 
    private:
-    std::unordered_map<std::string, double> m_variables;
+   
+    struct Variable {
+      double value;
+      Ast::AssignmentType assignmentType;
+    };
+    
+    std::unordered_map<std::string, Variable> m_variables;
     std::ostream& m_outputStream;
+    
+    void AddBuiltinConstant(std::string constantName, double value);
   };
 }  // namespace calculator
 
