@@ -1,5 +1,6 @@
 #include <calculator/Context.hpp>
 #include <iostream>
+#include <string>
 
 void prefix() {
   std::cout << "> ";
