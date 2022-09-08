@@ -9,5 +9,6 @@ build/
 .idea
 cmake-build-debug
 CMakeLists.txt
-vsxmake*docs
+vsxmake*
 docs
+.vs
