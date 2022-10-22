@@ -57,7 +57,7 @@ void MainWindow::execute() {
 void MainWindow::openFile() {
   m_openedFile = QFileDialog::getOpenFileName(
       this, "Open Calc file", QDir::currentPath(), "Calc Files (*.calc)");
-  if (m_openedFile == "") return;
+  if (m_openedFile.isEmpty()) return;
   QFile file(m_openedFile);
   file.open(QIODevice::ReadOnly);
   QString data = QString::fromUtf8(file.readAll());
@@ -65,4 +65,14 @@ void MainWindow::openFile() {
 }
 
 void MainWindow::saveFile() {
+  auto newFilePath = QFileDialog::getSaveFileName(
+      this, "Save Calc file", QDir::currentPath(), "Calc Files (*.calc)");
+  if (newFilePath.isEmpty()) return;
+
+  QFile file(newFilePath);
+  file.open(QIODevice::ReadWrite);
+
+  auto content = m_textEditor->toPlainText();
+  QTextStream stream(&file);
+  stream << content;
 }
