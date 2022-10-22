@@ -1,5 +1,4 @@
 #include <fmt/core.h>
-
 #include <calculator/Ast/BinaryOperation.hpp>
 #include <calculator/Ast/UnaryOperation.hpp>
 #include <calculator/Ast/Variable.hpp>
@@ -77,6 +76,8 @@ namespace calculator {
       case TokenType::Const:
         assignmentType = Ast::AssignmentType::Constant;
         break;
+      default:
+        throw std::runtime_error("bad keyboard");
     }
 
     const Token& identifier = Expect(Advance(), TokenType::Identifier);

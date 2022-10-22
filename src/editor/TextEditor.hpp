@@ -10,7 +10,7 @@ class TextEditor : public QTextEdit {
   Q_OBJECT
 
  public:
-  TextEditor() = default;
+  TextEditor();
 };
 
 #endif

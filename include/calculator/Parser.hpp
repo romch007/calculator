@@ -53,7 +53,7 @@ namespace calculator {
      * @param tokenType The expected token type
      * @return The token to check
      */
-    const Token& Expect(const Token& token, TokenType tokenType);
+    static const Token& Expect(const Token& token, TokenType tokenType);
     const Token& Expect(TokenType tokenType);
 
     /**

@@ -25,7 +25,7 @@ MainWindow::MainWindow() {
   m_layout->addWidget(m_textEditor);
   m_layout->addWidget(m_output);
 
-  auto layout_container = new QWidget;
+  auto* layout_container = new QWidget;
   layout_container->setLayout(m_layout);
 
   setCentralWidget(layout_container);
@@ -41,11 +41,17 @@ void MainWindow::setupActions() {
   connect(m_saveAction, &QAction::triggered, this, &MainWindow::saveFile);
 }
 void MainWindow::execute() {
-  auto text = m_textEditor->toPlainText();
+  auto qtText = m_textEditor->toPlainText();
+  std::string text = qtText.toUtf8().constData();
   std::stringstream result;
+
   calculator::Context context(result);
-  context.Execute(text.toStdString());
-  m_output->setText(QString::fromStdString(result.str()));
+  context.Execute(text);
+
+  auto textResult = result.str();
+  qtText = QString::fromUtf8(textResult.c_str());
+
+  m_output->setText(qtText);
 }
 
 void MainWindow::openFile() {

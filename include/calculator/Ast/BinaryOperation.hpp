@@ -7,8 +7,6 @@
 #include <calculator/Prerequisites.hpp>
 #include <memory>
 
-#include "calculator/Context.hpp"
-
 namespace calculator::Ast {
 
   class BinaryOperation;
@@ -20,7 +18,7 @@ namespace calculator::Ast {
     explicit BinaryOperation(BinaryOpType op);
     BinaryOperation(const BinaryOperation&) = delete;
     BinaryOperation(BinaryOperation&&) noexcept = default;
-    ~BinaryOperation() = default;
+    ~BinaryOperation() override = default;
 
     BinaryOperation& operator=(const BinaryOperation&) = delete;
     BinaryOperation& operator=(BinaryOperation&&) noexcept = default;

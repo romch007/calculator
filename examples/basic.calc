@@ -4,5 +4,5 @@ let test = 999
 const result = (6 + 4) * sin(PI) - test
 test = 6
 # Comment2
--> result
--> PI * test
+result
+PI * test

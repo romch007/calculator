@@ -18,7 +18,7 @@ namespace calculator {
   void Context::Execute(const std::string& input) {
     auto tokens = Tokenise(input);
     if (tokens.size() <= 1) throw std::runtime_error("no token");
-    Parser parser;
+    Parser parser{};
     auto ast = parser.Parse(tokens);
     if (ast) ast->Execute(*this);
   }
