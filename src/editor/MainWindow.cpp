@@ -1,6 +1,7 @@
 #include <MainWindow.hpp>
 #include <QFileDialog>
 #include <QStyle>
+#include <QTextStream>
 #include <calculator/Context.hpp>
 #include <sstream>
 
