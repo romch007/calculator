@@ -32,4 +32,3 @@ target("calculator")
 
 includes("tests/xmake.lua")
 includes("src/**.lua")
-includes("xmake/**.lua")
