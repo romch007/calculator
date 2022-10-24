@@ -2,6 +2,7 @@
 #include <QFileDialog>
 #include <QStyle>
 #include <QTextStream>
+#include <QApplication>
 #include <calculator/Context.hpp>
 #include <sstream>
 
@@ -13,7 +14,7 @@ MainWindow::MainWindow() {
   setupActions();
 
   m_toolbar = addToolBar("Tools");
-  m_toolbar->insertActions(nullptr, {m_openAction, m_saveAction, m_runAction});
+  m_toolbar->insertActions(nullptr, {m_openAction, m_saveAction, m_runAction, m_quitAction});
 
   setWindowTitle("Calculator");
   resize(1280, 720);
@@ -40,7 +41,11 @@ void MainWindow::setupActions() {
 
   m_saveAction = new QAction("Save", this);
   connect(m_saveAction, &QAction::triggered, this, &MainWindow::saveFile);
+
+  m_quitAction = new QAction("Quit", this);
+  connect(m_quitAction, &QAction::triggered, this, &MainWindow::quit);
 }
+
 void MainWindow::execute() {
   auto qtText = m_textEditor->toPlainText();
   std::string text = qtText.toUtf8().constData();
@@ -76,4 +81,8 @@ void MainWindow::saveFile() {
   auto content = m_textEditor->toPlainText();
   QTextStream stream(&file);
   stream << content;
+}
+
+void MainWindow::quit() {
+  QApplication::quit();
 }

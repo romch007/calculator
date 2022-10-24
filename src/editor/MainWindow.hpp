@@ -21,6 +21,7 @@ class MainWindow : public QMainWindow {
   void execute();
   void openFile();
   void saveFile();
+  void quit();
 
  private:
   void setupActions();
@@ -33,6 +34,7 @@ class MainWindow : public QMainWindow {
   QAction* m_runAction;
   QAction* m_openAction;
   QAction* m_saveAction;
+  QAction* m_quitAction;
 
   QString m_openedFile;
 };
