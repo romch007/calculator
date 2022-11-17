@@ -4,7 +4,7 @@ set_allowedarchs("x64")
 
 set_languages("cxx20")
 
-set_rundir("./build/$(plat)_$(arch)_$(mode)")
+set_rundir(".")
 set_targetdir("./build/$(plat)_$(arch)_$(mode)")
 
 add_requires("fast_float", "fmt")
