@@ -52,7 +52,13 @@ void MainWindow::execute() {
   std::stringstream result;
 
   calculator::Context context(result);
-  context.Execute(text);
+  try {
+    context.Execute(text);
+  } catch (const std::exception& e) {
+    QString errorMessage(e.what());
+    m_output->setText(errorMessage);
+    return;
+  }
 
   auto textResult = result.str();
   qtText = QString::fromUtf8(textResult.c_str());
