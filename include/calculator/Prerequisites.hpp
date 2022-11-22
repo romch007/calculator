@@ -12,10 +12,19 @@
 #elif defined(__linux__)
 #define CALCULATOR_EXPORT __attribute__((visibility("default")))
 #define CALCULATOR_IMPORT __attribute__((visibility("default")))
-#elif defined(__FreeBSD__)
+#elif defined(__APPLE__)
 #define CALCULATOR_EXPORT __attribute__((visibility("default")))
 #define CALCULATOR_IMPORT __attribute__((visibility("default")))
-#elif
+#elif defined(__unix__)
+#include <sys/param.h>
+#if defined(BSD)
+#define CALCULATOR_EXPORT __attribute__((visibility("default")))
+#define CALCULATOR_IMPORT __attribute__((visibility("default")))
+#endif
+#elif defined(__WASM__)
+#define CALCULATOR_EXPORT
+#define CALCULATOR_IMPORT
+#else
 #error "Platform not supported"
 #endif
 

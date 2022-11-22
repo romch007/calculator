@@ -11,6 +11,10 @@ add_requires("fast_float", "fmt")
 
 add_headerfiles("examples/*.calc")
 
+if is_plat("wasm") then
+  add_defines("__WASM__")
+end
+
 target("calculator")
     set_kind("$(kind)")
     set_group("Librairies")
