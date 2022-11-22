@@ -4,8 +4,7 @@
 namespace calculator::Ast {
   FunctionCall::FunctionCall(FunctionType type,
                              std::vector<ExpressionPtr> arguments)
-      : functionType(type), arguments(std::move(arguments)) {
-  }
+      : functionType(type), arguments(std::move(arguments)) {}
 
   double FunctionCall::Compute(Context& context) const {
     std::vector<double> argumentsValue;
@@ -20,6 +19,8 @@ namespace calculator::Ast {
         return std::cos(argumentsValue.at(0));
       case FunctionType::Tan:
         return std::tan(argumentsValue.at(0));
+      case FunctionType::Abs:
+        return std::abs(argumentsValue.at(0));
     }
   }
 }  // namespace calculator::Ast

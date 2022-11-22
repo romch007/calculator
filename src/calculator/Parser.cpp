@@ -1,4 +1,5 @@
 #include <fmt/core.h>
+
 #include <calculator/Ast/BinaryOperation.hpp>
 #include <calculator/Ast/UnaryOperation.hpp>
 #include <calculator/Ast/Variable.hpp>
@@ -232,6 +233,8 @@ namespace calculator {
       return Ast::FunctionType::Cos;
     } else if (identifier == "tan") {
       return Ast::FunctionType::Tan;
+    } else if (identifier == "abs") {
+      return Ast::FunctionType::Abs;
     }
     throw std::runtime_error("unknown function '" + std::string(identifier) +
                              "'");

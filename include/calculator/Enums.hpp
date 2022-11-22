@@ -20,7 +20,8 @@ namespace calculator::Ast {
   enum class FunctionType {
     Sin,
     Cos,
-    Tan
+    Tan,
+    Abs
   };
 
   enum class UnaryOpType {
