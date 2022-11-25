@@ -18,7 +18,6 @@ namespace calculator::Ast {
     UnaryOperation(UnaryOpType op, ExpressionPtr operand);
     UnaryOperation(const UnaryOperation&) = delete;
     UnaryOperation(UnaryOperation&&) noexcept = default;
-    ~UnaryOperation() override = default;
 
     UnaryOperation& operator=(const UnaryOperation&) = delete;
     UnaryOperation& operator=(UnaryOperation&&) noexcept = default;

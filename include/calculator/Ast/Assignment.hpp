@@ -20,7 +20,6 @@ namespace calculator::Ast {
                AssignmentType assignmentType);
     Assignment(const Assignment&) = delete;
     Assignment(Assignment&&) noexcept = default;
-    ~Assignment() = default;
 
     Assignment& operator=(const Assignment&) = delete;
     Assignment& operator=(Assignment&&) noexcept = default;

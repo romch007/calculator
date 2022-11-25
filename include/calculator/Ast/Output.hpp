@@ -19,7 +19,6 @@ namespace calculator::Ast {
     explicit Output(ExpressionPtr content);
     Output(const Output&) = delete;
     Output(Output&&) noexcept = default;
-    ~Output() override = default;
 
     Output& operator=(const Output&) = delete;
     Output& operator=(Output&&) noexcept = default;

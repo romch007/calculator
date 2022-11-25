@@ -18,7 +18,6 @@ namespace calculator::Ast {
     explicit BinaryOperation(BinaryOpType op);
     BinaryOperation(const BinaryOperation&) = delete;
     BinaryOperation(BinaryOperation&&) noexcept = default;
-    ~BinaryOperation() override = default;
 
     BinaryOperation& operator=(const BinaryOperation&) = delete;
     BinaryOperation& operator=(BinaryOperation&&) noexcept = default;

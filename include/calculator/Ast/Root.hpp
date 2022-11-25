@@ -20,7 +20,6 @@ namespace calculator::Ast {
     Root() = default;
     Root(const Root&) = delete;
     Root(Root&&) noexcept = default;
-    ~Root() override = default;
 
     Root& operator=(const Root&) = delete;
     Root& operator=(Root&&) noexcept = default;
