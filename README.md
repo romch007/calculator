@@ -15,4 +15,7 @@ You can run the REPL version with `xmake run repl`
 * Basic operations (`+`,`-`,`*`,`/`)
 * Power (`^`)
 * Parenthesis
-* Functions (`sin`, `cos`, `tan`)
+* Functions (`sin`, `cos`, `tan`, `abs`)
+* Variables:
+    * mutable variables: `let a = 5`
+    * constant variables `const n = 6`
