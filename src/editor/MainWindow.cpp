@@ -4,7 +4,6 @@
 #include <QTextStream>
 #include <QApplication>
 #include <calculator/Context.hpp>
-#include <sstream>
 
 MainWindow::MainWindow() {
   m_layout = new QVBoxLayout;

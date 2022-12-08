@@ -1,0 +1,101 @@
+[
+{
+  "directory": "/home/romain/dev/cpp/calculator",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++20", "-Iinclude", "-DCALCULATOR_BUILD", "-DCALCULATOR_STATIC", "-I", "/home/romain/.config/.xmake/packages/f/fast_float/v3.5.1/e0d4e126ddfb47b1956037caf8a44a92/include", "-DNDEBUG", "-o", "build/.objs/calculator/linux/x86_64/release/src/calculator/Variable.cpp.o", "src/calculator/Variable.cpp"],
+  "file": "src/calculator/Variable.cpp"
+},
+{
+  "directory": "/home/romain/dev/cpp/calculator",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++20", "-Iinclude", "-DCALCULATOR_BUILD", "-DCALCULATOR_STATIC", "-I", "/home/romain/.config/.xmake/packages/f/fast_float/v3.5.1/e0d4e126ddfb47b1956037caf8a44a92/include", "-DNDEBUG", "-o", "build/.objs/calculator/linux/x86_64/release/src/calculator/FunctionCall.cpp.o", "src/calculator/FunctionCall.cpp"],
+  "file": "src/calculator/FunctionCall.cpp"
+},
+{
+  "directory": "/home/romain/dev/cpp/calculator",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++20", "-Iinclude", "-DCALCULATOR_BUILD", "-DCALCULATOR_STATIC", "-I", "/home/romain/.config/.xmake/packages/f/fast_float/v3.5.1/e0d4e126ddfb47b1956037caf8a44a92/include", "-DNDEBUG", "-o", "build/.objs/calculator/linux/x86_64/release/src/calculator/Context.cpp.o", "src/calculator/Context.cpp"],
+  "file": "src/calculator/Context.cpp"
+},
+{
+  "directory": "/home/romain/dev/cpp/calculator",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++20", "-Iinclude", "-DCALCULATOR_BUILD", "-DCALCULATOR_STATIC", "-I", "/home/romain/.config/.xmake/packages/f/fast_float/v3.5.1/e0d4e126ddfb47b1956037caf8a44a92/include", "-DNDEBUG", "-o", "build/.objs/calculator/linux/x86_64/release/src/calculator/Root.cpp.o", "src/calculator/Root.cpp"],
+  "file": "src/calculator/Root.cpp"
+},
+{
+  "directory": "/home/romain/dev/cpp/calculator",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++20", "-Iinclude", "-DCALCULATOR_BUILD", "-DCALCULATOR_STATIC", "-I", "/home/romain/.config/.xmake/packages/f/fast_float/v3.5.1/e0d4e126ddfb47b1956037caf8a44a92/include", "-DNDEBUG", "-o", "build/.objs/calculator/linux/x86_64/release/src/calculator/Lexer.cpp.o", "src/calculator/Lexer.cpp"],
+  "file": "src/calculator/Lexer.cpp"
+},
+{
+  "directory": "/home/romain/dev/cpp/calculator",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++20", "-Iinclude", "-DCALCULATOR_BUILD", "-DCALCULATOR_STATIC", "-I", "/home/romain/.config/.xmake/packages/f/fast_float/v3.5.1/e0d4e126ddfb47b1956037caf8a44a92/include", "-DNDEBUG", "-o", "build/.objs/calculator/linux/x86_64/release/src/calculator/UnaryOperation.cpp.o", "src/calculator/UnaryOperation.cpp"],
+  "file": "src/calculator/UnaryOperation.cpp"
+},
+{
+  "directory": "/home/romain/dev/cpp/calculator",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++20", "-Iinclude", "-DCALCULATOR_BUILD", "-DCALCULATOR_STATIC", "-I", "/home/romain/.config/.xmake/packages/f/fast_float/v3.5.1/e0d4e126ddfb47b1956037caf8a44a92/include", "-DNDEBUG", "-o", "build/.objs/calculator/linux/x86_64/release/src/calculator/Output.cpp.o", "src/calculator/Output.cpp"],
+  "file": "src/calculator/Output.cpp"
+},
+{
+  "directory": "/home/romain/dev/cpp/calculator",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++20", "-Iinclude", "-DCALCULATOR_BUILD", "-DCALCULATOR_STATIC", "-I", "/home/romain/.config/.xmake/packages/f/fast_float/v3.5.1/e0d4e126ddfb47b1956037caf8a44a92/include", "-DNDEBUG", "-o", "build/.objs/calculator/linux/x86_64/release/src/calculator/BinaryOperation.cpp.o", "src/calculator/BinaryOperation.cpp"],
+  "file": "src/calculator/BinaryOperation.cpp"
+},
+{
+  "directory": "/home/romain/dev/cpp/calculator",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++20", "-Iinclude", "-DCALCULATOR_BUILD", "-DCALCULATOR_STATIC", "-I", "/home/romain/.config/.xmake/packages/f/fast_float/v3.5.1/e0d4e126ddfb47b1956037caf8a44a92/include", "-DNDEBUG", "-o", "build/.objs/calculator/linux/x86_64/release/src/calculator/Parser.cpp.o", "src/calculator/Parser.cpp"],
+  "file": "src/calculator/Parser.cpp"
+},
+{
+  "directory": "/home/romain/dev/cpp/calculator",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++20", "-Iinclude", "-DCALCULATOR_BUILD", "-DCALCULATOR_STATIC", "-I", "/home/romain/.config/.xmake/packages/f/fast_float/v3.5.1/e0d4e126ddfb47b1956037caf8a44a92/include", "-DNDEBUG", "-o", "build/.objs/calculator/linux/x86_64/release/src/calculator/Number.cpp.o", "src/calculator/Number.cpp"],
+  "file": "src/calculator/Number.cpp"
+},
+{
+  "directory": "/home/romain/dev/cpp/calculator",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++20", "-Iinclude", "-DCALCULATOR_BUILD", "-DCALCULATOR_STATIC", "-I", "/home/romain/.config/.xmake/packages/f/fast_float/v3.5.1/e0d4e126ddfb47b1956037caf8a44a92/include", "-DNDEBUG", "-o", "build/.objs/calculator/linux/x86_64/release/src/calculator/Assignment.cpp.o", "src/calculator/Assignment.cpp"],
+  "file": "src/calculator/Assignment.cpp"
+},
+{
+  "directory": "/home/romain/dev/cpp/calculator",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++20", "-Iinclude", "-DCALCULATOR_STATIC", "-DNDEBUG", "-o", "build/.objs/repl/linux/x86_64/release/src/repl/main.cpp.o", "src/repl/main.cpp"],
+  "file": "src/repl/main.cpp"
+},
+{
+  "directory": "/home/romain/dev/cpp/calculator",
+  "arguments": ["/usr/lib/qt6/moc", "-DQT_NO_DEBUG", "-DQT_DEPRECATED_WARNINGS", "-DQT_WIDGETS_LIB", "-DQT_GUI_LIB", "-DQT_QUICK_LIB", "-DQT_QML_LIB", "-DQT_CORE_LIB", "-DQT_NETWORK_LIB", "-Isrc/editor", "-I/home/romain/dev/cpp/calculator/build/.gens/editor/linux/x86_64/release/rules/qt/ui", "-I/usr/include/qt6/QtWidgets", "-I/usr/include/qt6/QtWidgets/6.4.1", "-I/usr/include/qt6/QtWidgets/6.4.1/QtWidgets", "-I/usr/include/qt6/QtGui", "-I/usr/include/qt6/QtGui/6.4.1", "-I/usr/include/qt6/QtGui/6.4.1/QtGui", "-I/usr/include/qt6/QtQuick", "-I/usr/include/qt6/QtQuick/6.4.1", "-I/usr/include/qt6/QtQuick/6.4.1/QtQuick", "-I/usr/include/qt6/QtQml", "-I/usr/include/qt6/QtQml/6.4.1", "-I/usr/include/qt6/QtQml/6.4.1/QtQml", "-I/usr/include/qt6/QtCore", "-I/usr/include/qt6/QtCore/6.4.1", "-I/usr/include/qt6/QtCore/6.4.1/QtCore", "-I/usr/include/qt6/QtNetwork", "-I/usr/include/qt6/QtNetwork/6.4.1", "-I/usr/include/qt6/QtNetwork/6.4.1/QtNetwork", "-I/usr/include/qt6", "-I/usr/lib/qt6/mkspecs/linux-g++", "src/editor/MainWindow.hpp", "-o", "build/.gens/editor/linux/x86_64/release/src/editor/moc_MainWindow.cpp"],
+  "file": "build/.gens/editor/linux/x86_64/release/src/editor/moc_MainWindow.cpp"
+},
+{
+  "directory": "/home/romain/dev/cpp/calculator",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++20", "-Isrc/editor", "-I/home/romain/dev/cpp/calculator/build/.gens/editor/linux/x86_64/release/rules/qt/ui", "-Iinclude", "-DQT_NO_DEBUG", "-DQT_DEPRECATED_WARNINGS", "-DQT_WIDGETS_LIB", "-DQT_GUI_LIB", "-DQT_QUICK_LIB", "-DQT_QML_LIB", "-DQT_CORE_LIB", "-DQT_NETWORK_LIB", "-DCALCULATOR_STATIC", "-I", "/usr/include/qt6/QtWidgets", "-I", "/usr/include/qt6/QtWidgets/6.4.1", "-I", "/usr/include/qt6/QtWidgets/6.4.1/QtWidgets", "-I", "/usr/include/qt6/QtGui", "-I", "/usr/include/qt6/QtGui/6.4.1", "-I", "/usr/include/qt6/QtGui/6.4.1/QtGui", "-I", "/usr/include/qt6/QtQuick", "-I", "/usr/include/qt6/QtQuick/6.4.1", "-I", "/usr/include/qt6/QtQuick/6.4.1/QtQuick", "-I", "/usr/include/qt6/QtQml", "-I", "/usr/include/qt6/QtQml/6.4.1", "-I", "/usr/include/qt6/QtQml/6.4.1/QtQml", "-I", "/usr/include/qt6/QtCore", "-I", "/usr/include/qt6/QtCore/6.4.1", "-I", "/usr/include/qt6/QtCore/6.4.1/QtCore", "-I", "/usr/include/qt6/QtNetwork", "-I", "/usr/include/qt6/QtNetwork/6.4.1", "-I", "/usr/include/qt6/QtNetwork/6.4.1/QtNetwork", "-I", "/usr/include/qt6", "-I", "/usr/lib/qt6/mkspecs/linux-g++", "-DNDEBUG", "-fPIC", "-o", "build/.objs/editor/linux/x86_64/release/gens/src/editor/moc_MainWindow.cpp.o", "build/.gens/editor/linux/x86_64/release/src/editor/moc_MainWindow.cpp"],
+  "file": "build/.gens/editor/linux/x86_64/release/src/editor/moc_MainWindow.cpp"
+},
+{
+  "directory": "/home/romain/dev/cpp/calculator",
+  "arguments": ["/usr/lib/qt6/moc", "-DQT_NO_DEBUG", "-DQT_DEPRECATED_WARNINGS", "-DQT_WIDGETS_LIB", "-DQT_GUI_LIB", "-DQT_QUICK_LIB", "-DQT_QML_LIB", "-DQT_CORE_LIB", "-DQT_NETWORK_LIB", "-Isrc/editor", "-I/home/romain/dev/cpp/calculator/build/.gens/editor/linux/x86_64/release/rules/qt/ui", "-I/usr/include/qt6/QtWidgets", "-I/usr/include/qt6/QtWidgets/6.4.1", "-I/usr/include/qt6/QtWidgets/6.4.1/QtWidgets", "-I/usr/include/qt6/QtGui", "-I/usr/include/qt6/QtGui/6.4.1", "-I/usr/include/qt6/QtGui/6.4.1/QtGui", "-I/usr/include/qt6/QtQuick", "-I/usr/include/qt6/QtQuick/6.4.1", "-I/usr/include/qt6/QtQuick/6.4.1/QtQuick", "-I/usr/include/qt6/QtQml", "-I/usr/include/qt6/QtQml/6.4.1", "-I/usr/include/qt6/QtQml/6.4.1/QtQml", "-I/usr/include/qt6/QtCore", "-I/usr/include/qt6/QtCore/6.4.1", "-I/usr/include/qt6/QtCore/6.4.1/QtCore", "-I/usr/include/qt6/QtNetwork", "-I/usr/include/qt6/QtNetwork/6.4.1", "-I/usr/include/qt6/QtNetwork/6.4.1/QtNetwork", "-I/usr/include/qt6", "-I/usr/lib/qt6/mkspecs/linux-g++", "src/editor/TextEditor.hpp", "-o", "build/.gens/editor/linux/x86_64/release/src/editor/moc_TextEditor.cpp"],
+  "file": "build/.gens/editor/linux/x86_64/release/src/editor/moc_TextEditor.cpp"
+},
+{
+  "directory": "/home/romain/dev/cpp/calculator",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++20", "-Isrc/editor", "-I/home/romain/dev/cpp/calculator/build/.gens/editor/linux/x86_64/release/rules/qt/ui", "-Iinclude", "-DQT_NO_DEBUG", "-DQT_DEPRECATED_WARNINGS", "-DQT_WIDGETS_LIB", "-DQT_GUI_LIB", "-DQT_QUICK_LIB", "-DQT_QML_LIB", "-DQT_CORE_LIB", "-DQT_NETWORK_LIB", "-DCALCULATOR_STATIC", "-I", "/usr/include/qt6/QtWidgets", "-I", "/usr/include/qt6/QtWidgets/6.4.1", "-I", "/usr/include/qt6/QtWidgets/6.4.1/QtWidgets", "-I", "/usr/include/qt6/QtGui", "-I", "/usr/include/qt6/QtGui/6.4.1", "-I", "/usr/include/qt6/QtGui/6.4.1/QtGui", "-I", "/usr/include/qt6/QtQuick", "-I", "/usr/include/qt6/QtQuick/6.4.1", "-I", "/usr/include/qt6/QtQuick/6.4.1/QtQuick", "-I", "/usr/include/qt6/QtQml", "-I", "/usr/include/qt6/QtQml/6.4.1", "-I", "/usr/include/qt6/QtQml/6.4.1/QtQml", "-I", "/usr/include/qt6/QtCore", "-I", "/usr/include/qt6/QtCore/6.4.1", "-I", "/usr/include/qt6/QtCore/6.4.1/QtCore", "-I", "/usr/include/qt6/QtNetwork", "-I", "/usr/include/qt6/QtNetwork/6.4.1", "-I", "/usr/include/qt6/QtNetwork/6.4.1/QtNetwork", "-I", "/usr/include/qt6", "-I", "/usr/lib/qt6/mkspecs/linux-g++", "-DNDEBUG", "-fPIC", "-o", "build/.objs/editor/linux/x86_64/release/gens/src/editor/moc_TextEditor.cpp.o", "build/.gens/editor/linux/x86_64/release/src/editor/moc_TextEditor.cpp"],
+  "file": "build/.gens/editor/linux/x86_64/release/src/editor/moc_TextEditor.cpp"
+},
+{
+  "directory": "/home/romain/dev/cpp/calculator",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++20", "-Isrc/editor", "-I/home/romain/dev/cpp/calculator/build/.gens/editor/linux/x86_64/release/rules/qt/ui", "-Iinclude", "-DQT_NO_DEBUG", "-DQT_DEPRECATED_WARNINGS", "-DQT_WIDGETS_LIB", "-DQT_GUI_LIB", "-DQT_QUICK_LIB", "-DQT_QML_LIB", "-DQT_CORE_LIB", "-DQT_NETWORK_LIB", "-DCALCULATOR_STATIC", "-I", "/usr/include/qt6/QtWidgets", "-I", "/usr/include/qt6/QtWidgets/6.4.1", "-I", "/usr/include/qt6/QtWidgets/6.4.1/QtWidgets", "-I", "/usr/include/qt6/QtGui", "-I", "/usr/include/qt6/QtGui/6.4.1", "-I", "/usr/include/qt6/QtGui/6.4.1/QtGui", "-I", "/usr/include/qt6/QtQuick", "-I", "/usr/include/qt6/QtQuick/6.4.1", "-I", "/usr/include/qt6/QtQuick/6.4.1/QtQuick", "-I", "/usr/include/qt6/QtQml", "-I", "/usr/include/qt6/QtQml/6.4.1", "-I", "/usr/include/qt6/QtQml/6.4.1/QtQml", "-I", "/usr/include/qt6/QtCore", "-I", "/usr/include/qt6/QtCore/6.4.1", "-I", "/usr/include/qt6/QtCore/6.4.1/QtCore", "-I", "/usr/include/qt6/QtNetwork", "-I", "/usr/include/qt6/QtNetwork/6.4.1", "-I", "/usr/include/qt6/QtNetwork/6.4.1/QtNetwork", "-I", "/usr/include/qt6", "-I", "/usr/lib/qt6/mkspecs/linux-g++", "-DNDEBUG", "-fPIC", "-o", "build/.objs/editor/linux/x86_64/release/src/editor/MainWindow.cpp.o", "src/editor/MainWindow.cpp"],
+  "file": "src/editor/MainWindow.cpp"
+},
+{
+  "directory": "/home/romain/dev/cpp/calculator",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++20", "-Isrc/editor", "-I/home/romain/dev/cpp/calculator/build/.gens/editor/linux/x86_64/release/rules/qt/ui", "-Iinclude", "-DQT_NO_DEBUG", "-DQT_DEPRECATED_WARNINGS", "-DQT_WIDGETS_LIB", "-DQT_GUI_LIB", "-DQT_QUICK_LIB", "-DQT_QML_LIB", "-DQT_CORE_LIB", "-DQT_NETWORK_LIB", "-DCALCULATOR_STATIC", "-I", "/usr/include/qt6/QtWidgets", "-I", "/usr/include/qt6/QtWidgets/6.4.1", "-I", "/usr/include/qt6/QtWidgets/6.4.1/QtWidgets", "-I", "/usr/include/qt6/QtGui", "-I", "/usr/include/qt6/QtGui/6.4.1", "-I", "/usr/include/qt6/QtGui/6.4.1/QtGui", "-I", "/usr/include/qt6/QtQuick", "-I", "/usr/include/qt6/QtQuick/6.4.1", "-I", "/usr/include/qt6/QtQuick/6.4.1/QtQuick", "-I", "/usr/include/qt6/QtQml", "-I", "/usr/include/qt6/QtQml/6.4.1", "-I", "/usr/include/qt6/QtQml/6.4.1/QtQml", "-I", "/usr/include/qt6/QtCore", "-I", "/usr/include/qt6/QtCore/6.4.1", "-I", "/usr/include/qt6/QtCore/6.4.1/QtCore", "-I", "/usr/include/qt6/QtNetwork", "-I", "/usr/include/qt6/QtNetwork/6.4.1", "-I", "/usr/include/qt6/QtNetwork/6.4.1/QtNetwork", "-I", "/usr/include/qt6", "-I", "/usr/lib/qt6/mkspecs/linux-g++", "-DNDEBUG", "-fPIC", "-o", "build/.objs/editor/linux/x86_64/release/src/editor/main.cpp.o", "src/editor/main.cpp"],
+  "file": "src/editor/main.cpp"
+},
+{
+  "directory": "/home/romain/dev/cpp/calculator",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++20", "-Isrc/editor", "-I/home/romain/dev/cpp/calculator/build/.gens/editor/linux/x86_64/release/rules/qt/ui", "-Iinclude", "-DQT_NO_DEBUG", "-DQT_DEPRECATED_WARNINGS", "-DQT_WIDGETS_LIB", "-DQT_GUI_LIB", "-DQT_QUICK_LIB", "-DQT_QML_LIB", "-DQT_CORE_LIB", "-DQT_NETWORK_LIB", "-DCALCULATOR_STATIC", "-I", "/usr/include/qt6/QtWidgets", "-I", "/usr/include/qt6/QtWidgets/6.4.1", "-I", "/usr/include/qt6/QtWidgets/6.4.1/QtWidgets", "-I", "/usr/include/qt6/QtGui", "-I", "/usr/include/qt6/QtGui/6.4.1", "-I", "/usr/include/qt6/QtGui/6.4.1/QtGui", "-I", "/usr/include/qt6/QtQuick", "-I", "/usr/include/qt6/QtQuick/6.4.1", "-I", "/usr/include/qt6/QtQuick/6.4.1/QtQuick", "-I", "/usr/include/qt6/QtQml", "-I", "/usr/include/qt6/QtQml/6.4.1", "-I", "/usr/include/qt6/QtQml/6.4.1/QtQml", "-I", "/usr/include/qt6/QtCore", "-I", "/usr/include/qt6/QtCore/6.4.1", "-I", "/usr/include/qt6/QtCore/6.4.1/QtCore", "-I", "/usr/include/qt6/QtNetwork", "-I", "/usr/include/qt6/QtNetwork/6.4.1", "-I", "/usr/include/qt6/QtNetwork/6.4.1/QtNetwork", "-I", "/usr/include/qt6", "-I", "/usr/lib/qt6/mkspecs/linux-g++", "-DNDEBUG", "-fPIC", "-o", "build/.objs/editor/linux/x86_64/release/src/editor/TextEditor.cpp.o", "src/editor/TextEditor.cpp"],
+  "file": "src/editor/TextEditor.cpp"
+},
+{
+  "directory": "/home/romain/dev/cpp/calculator",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++20", "-Iinclude", "-DCALCULATOR_STATIC", "-DNDEBUG", "-o", "build/.objs/eval/linux/x86_64/release/src/eval/main.cpp.o", "src/eval/main.cpp"],
+  "file": "src/eval/main.cpp"
+}]

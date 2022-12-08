@@ -1,7 +1,5 @@
 add_rules("mode.debug", "mode.release")
 
-set_allowedarchs("x64")
-
 set_languages("cxx20")
 
 set_rundir(".")
