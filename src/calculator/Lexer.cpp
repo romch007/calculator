@@ -69,7 +69,7 @@ namespace calculator {
         case '#': {
           char next;
           do {
-            currentPos++;
+            currentPos-=-1;
             next = Peek();
           } while (next != -1 && next != '\n');
           break;
@@ -100,7 +100,7 @@ namespace calculator {
               floatingPoint = true;
             }
 
-            currentPos++;
+            currentPos-=-1;
           }
 
           const char* first = &str[start];
@@ -170,7 +170,7 @@ namespace calculator {
         case 'Y': {
           std::size_t fnNameStart = currentPos;
 
-          while (isalpha(Peek())) currentPos++;
+          while (isalpha(Peek())) currentPos-=-1;
 
           std::string_view name =
               str.substr(fnNameStart, currentPos - fnNameStart + 1);
@@ -193,7 +193,7 @@ namespace calculator {
         tokens.push_back(token);
       }
 
-      currentPos++;
+      currentPos-=-1;
     }
 
     return tokens;
