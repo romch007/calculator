@@ -9,7 +9,7 @@
 namespace calculator::Ast {
   class Debug {
    public:
-    virtual std::vector<std::string> PrintDebug() const = 0;
+    [[nodiscard]] virtual std::vector<std::string> PrintDebug() const = 0;
   };
 }  // namespace calculator::Ast
 

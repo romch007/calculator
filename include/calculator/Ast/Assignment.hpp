@@ -26,7 +26,7 @@ namespace calculator::Ast {
 
     void Execute(Context& context) const override;
 
-    std::vector<std::string> PrintDebug() const override;
+    [[nodiscard]] std::vector<std::string> PrintDebug() const override;
 
     std::string_view variableName;
     ExpressionPtr content;

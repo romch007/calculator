@@ -26,7 +26,7 @@ namespace calculator::Ast {
 
     [[nodiscard]] double Compute(Context& context) const override;
 
-    std::vector<std::string> PrintDebug() const override;
+    [[nodiscard]] std::vector<std::string> PrintDebug() const override;
 
     double value{0.0};
   };
