@@ -1,6 +1,7 @@
 #include <calculator/Context.hpp>
 #include <calculator/Lexer.hpp>
 #include <calculator/Parser.hpp>
+#include <iostream>
 #include <numbers>
 #include <stdexcept>
 
@@ -51,7 +52,7 @@ namespace calculator {
   }
 
   void Context::PrintAstDebug(const Ast::RootPtr& ast) {
-    auto separator = "------";
+    std::string separator = "------";
     m_outputStream << separator << " AST dump " << separator << "\n";
     for (const auto& line : ast->PrintDebug()) {
       m_outputStream << line << "\n";

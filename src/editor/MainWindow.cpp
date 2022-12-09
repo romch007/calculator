@@ -1,9 +1,10 @@
 #include <MainWindow.hpp>
+#include <QApplication>
 #include <QFileDialog>
 #include <QStyle>
 #include <QTextStream>
-#include <QApplication>
 #include <calculator/Context.hpp>
+#include <sstream>
 
 MainWindow::MainWindow() {
   m_layout = new QVBoxLayout;
@@ -13,7 +14,8 @@ MainWindow::MainWindow() {
   setupActions();
 
   m_toolbar = addToolBar("Tools");
-  m_toolbar->insertActions(nullptr, {m_openAction, m_saveAction, m_runAction, m_quitAction});
+  m_toolbar->insertActions(
+      nullptr, {m_openAction, m_saveAction, m_runAction, m_quitAction});
 
   setWindowTitle("Calculator");
   resize(1280, 720);

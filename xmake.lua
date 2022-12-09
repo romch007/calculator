@@ -13,11 +13,6 @@ if is_plat("wasm") then
     add_defines("__WASM__")
 end
 
-if is_mode("debug") then
-    set_optimize("none")
-    set_symbols("debug")
-end
-
 set_optimize(is_mode("debug") and "none" or "fastest")
 set_symbols(is_mode("debug") and "debug" or "hidden")
 
@@ -39,6 +34,4 @@ target("calculator")
         end
     end)
 
-
-includes("tests/xmake.lua")
 includes("src/**.lua")
