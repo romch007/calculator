@@ -38,7 +38,7 @@ namespace calculator::Ast {
 
   std::vector<std::string> BinaryOperation::PrintDebug() const {
     std::vector<std::string> lines;
-    lines.push_back("BinaryOperation(");
+    lines.emplace_back("BinaryOperation(");
     for (const auto& line : lhs->PrintDebug()) {
       lines.push_back("  " + line);
     }

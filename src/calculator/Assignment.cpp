@@ -15,9 +15,9 @@ namespace calculator::Ast {
 
   std::vector<std::string> Assignment::PrintDebug() const {
     std::vector<std::string> lines;
-    lines.push_back("Assignment(");
+    lines.emplace_back("Assignment(");
     lines.push_back("  " + std::string(variableName));
-    lines.push_back("assigned to");
+    lines.emplace_back("assigned to");
     for (const auto& line : content->PrintDebug()) {
       lines.push_back("  " + line);
     }

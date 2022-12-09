@@ -11,11 +11,11 @@ namespace calculator::Ast {
 
   std::vector<std::string> Output::PrintDebug() const {
     std::vector<std::string> lines;
-    lines.push_back("Output(");
+    lines.emplace_back("Output(");
     for (const auto& line : content->PrintDebug()) {
       lines.push_back("  " + line);
     }
-    lines.push_back(")");
+    lines.emplace_back(")");
     return lines;
   }
 }  // namespace calculator::Ast

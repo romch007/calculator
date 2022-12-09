@@ -22,7 +22,7 @@ namespace calculator::Ast {
 
   std::vector<std::string> UnaryOperation::PrintDebug() const {
     std::vector<std::string> lines;
-    lines.push_back("UnaryOperation(");
+    lines.emplace_back("UnaryOperation(");
     lines.push_back(GetOpSymbol());
     for (const auto& line : operand->PrintDebug()) {
       lines.push_back(line);
