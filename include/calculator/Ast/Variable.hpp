@@ -25,13 +25,13 @@ namespace calculator::Ast {
     inline explicit Variable(std::string_view variableName);
 
     [[nodiscard]] double Compute(Context& context) const override;
+    std::vector<std::string> PrintDebug() const override;
 
     std::string_view variableName;
   };
 
   inline Variable::Variable(std::string_view variableName)
-      : variableName(variableName) {
-  }
+      : variableName(variableName) {}
 }  // namespace calculator::Ast
 
 #endif

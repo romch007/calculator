@@ -26,11 +26,12 @@ namespace calculator::Ast {
 
     [[nodiscard]] double Compute(Context& context) const override;
 
+    std::vector<std::string> PrintDebug() const override;
+
     double value{0.0};
   };
 
-  inline Number::Number(double initialValue) : value(initialValue) {
-  }
+  inline Number::Number(double initialValue) : value(initialValue) {}
 }  // namespace calculator::Ast
 
 #endif

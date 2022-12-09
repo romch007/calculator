@@ -17,7 +17,7 @@ namespace calculator {
    */
   class CALCULATOR_API Context {
    public:
-    explicit Context(std::ostream& outputStream);
+    explicit Context(std::ostream& outputStream, bool debug = false);
     ~Context() = default;
 
     Context(const Context&) = delete;
@@ -57,15 +57,16 @@ namespace calculator {
     std::ostream& GetOutputStream() const;
 
    private:
-   
     struct Variable {
       double value;
       Ast::AssignmentType assignmentType;
     };
-    
+
     std::unordered_map<std::string, Variable> m_variables;
     std::ostream& m_outputStream;
-    
+
+    bool m_debugMode;
+
     void AddBuiltinConstant(std::string constantName, double value);
   };
 }  // namespace calculator

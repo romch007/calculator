@@ -3,6 +3,7 @@
 #ifndef CALCULATOR_EXPRESSION_HPP
 #define CALCULATOR_EXPRESSION_HPP
 
+#include <calculator/Ast/Debug.hpp>
 #include <calculator/Context.hpp>
 #include <calculator/Enums.hpp>
 #include <calculator/Prerequisites.hpp>
@@ -18,7 +19,7 @@ namespace calculator::Ast {
   /**
    * A generic computable expression
    */
-  class Expression {
+  class Expression : public Debug {
    public:
     Expression() = default;
     Expression(const Expression&) = delete;

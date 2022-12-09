@@ -5,12 +5,22 @@ namespace calculator::Ast {
                          AssignmentType assignmentType)
       : variableName(variableName),
         content(std::move(content)),
-        assignmentType(assignmentType) {
-  }
+        assignmentType(assignmentType) {}
 
   void Assignment::Execute(Context& context) const {
     auto contentValue = content->Compute(context);
     context.SetVariable(std::string(variableName), contentValue,
                         assignmentType);
   }
+
+  std::vector<std::string> Assignment::PrintDebug() const {
+    std::vector<std::string> lines;
+    lines.push_back("Assignment(");
+    lines.push_back("  " + std::string(variableName));
+    lines.push_back("assigned to");
+    for (const auto& line : content->PrintDebug()) {
+      lines.push_back("  " + line);
+    }
+    return lines;
+  };
 }  // namespace calculator::Ast

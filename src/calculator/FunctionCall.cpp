@@ -23,4 +23,18 @@ namespace calculator::Ast {
         return std::abs(argumentsValue.at(0));
     }
   }
+
+  std::vector<std::string> FunctionCall::PrintDebug() const {
+    std::vector<std::string> lines;
+    lines.push_back("FunctionCall(");
+    // lines.push_back(std::string(functionType)); TODO
+    lines.push_back("with arguments");
+    for (const auto& argument : arguments) {
+      for (const auto& line : argument->PrintDebug()) {
+        lines.push_back("  " + line);
+      }
+      lines.push_back(",");
+    }
+    return lines;
+  }
 }  // namespace calculator::Ast

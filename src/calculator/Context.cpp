@@ -1,8 +1,8 @@
 #include <calculator/Context.hpp>
 #include <calculator/Lexer.hpp>
 #include <calculator/Parser.hpp>
-#include <stdexcept>
 #include <numbers>
+#include <stdexcept>
 
 namespace calculator {
   void Evaluate(const std::string& input, std::ostream& outputStream) {
@@ -10,7 +10,8 @@ namespace calculator {
     c.Execute(input);
   }
 
-  Context::Context(std::ostream& outputStream) : m_outputStream(outputStream) {
+  Context::Context(std::ostream& outputStream, bool debug)
+      : m_outputStream(outputStream), m_debugMode(debug) {
     AddBuiltinConstant("PI", std::numbers::pi);
     AddBuiltinConstant("E", std::numbers::e);
   }
@@ -20,14 +21,22 @@ namespace calculator {
     if (tokens.size() <= 1) throw std::runtime_error("no token");
     Parser parser{};
     auto ast = parser.Parse(tokens);
+    if (m_debugMode) {
+      for (const auto& line : ast->PrintDebug()) {
+        m_outputStream << line << "\n";
+      }
+    }
     if (ast) ast->Execute(*this);
   }
 
   void Context::SetVariable(std::string variableName, double value,
                             Ast::AssignmentType assignmentType) {
-    if (m_variables.contains(variableName) && m_variables.at(variableName).assignmentType == Ast::AssignmentType::Constant)
+    if (m_variables.contains(variableName) &&
+        m_variables.at(variableName).assignmentType ==
+            Ast::AssignmentType::Constant)
       throw std::runtime_error("trying to assign to constant variable");
-    m_variables.insert_or_assign(std::move(variableName), Variable { value, assignmentType });
+    m_variables.insert_or_assign(std::move(variableName),
+                                 Variable{value, assignmentType});
   }
 
   double Context::GetVariable(const std::string& variableName) const {
@@ -39,7 +48,7 @@ namespace calculator {
   std::ostream& Context::GetOutputStream() const {
     return m_outputStream;
   }
-  
+
   void Context::AddBuiltinConstant(std::string constantName, double value) {
     SetVariable(std::move(constantName), value, Ast::AssignmentType::Constant);
   }

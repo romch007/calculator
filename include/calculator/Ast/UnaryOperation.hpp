@@ -23,6 +23,7 @@ namespace calculator::Ast {
     UnaryOperation& operator=(UnaryOperation&&) noexcept = default;
 
     [[nodiscard]] double Compute(Context& context) const override;
+    std::vector<std::string> PrintDebug() const override;
 
     UnaryOpType operationType;
     ExpressionPtr operand;

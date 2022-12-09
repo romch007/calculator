@@ -3,6 +3,7 @@
 #ifndef CALCULATOR_NODE_HPP
 #define CALCULATOR_NODE_HPP
 
+#include <calculator/Ast/Debug.hpp>
 #include <calculator/Context.hpp>
 #include <calculator/Enums.hpp>
 #include <calculator/Prerequisites.hpp>
@@ -18,7 +19,7 @@ namespace calculator::Ast {
   /**
    * A generic Node in the AST
    */
-  class Node {
+  class Node : public Debug {
    public:
     Node() = default;
     Node(const Node&) = delete;

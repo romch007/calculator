@@ -24,6 +24,7 @@ namespace calculator::Ast {
     Output& operator=(Output&&) noexcept = default;
 
     void Execute(Context& context) const override;
+    std::vector<std::string> PrintDebug() const override;
 
     ExpressionPtr content;
   };

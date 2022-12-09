@@ -24,6 +24,8 @@ namespace calculator::Ast {
 
     [[nodiscard]] double Compute(Context& context) const override;
 
+    std::vector<std::string> PrintDebug() const override;
+
     BinaryOpType operationType;
     ExpressionPtr rhs;
     ExpressionPtr lhs;

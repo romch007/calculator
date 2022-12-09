@@ -27,6 +27,8 @@ namespace calculator::Ast {
     void AddStatement(NodePtr statement);
     void Execute(Context& context) const override;
 
+    std::vector<std::string> PrintDebug() const override;
+
    private:
     std::vector<NodePtr> m_statements;
   };

@@ -10,4 +10,14 @@ namespace calculator::Ast {
       statement->Execute(context);
     }
   }
+
+  std::vector<std::string> Root::PrintDebug() const {
+    std::vector<std::string> lines;
+    for (const auto& child : m_statements) {
+      for (const auto& line : child->PrintDebug()) {
+        lines.push_back(line);
+      }
+    }
+    return lines;
+  }
 }  // namespace calculator::Ast

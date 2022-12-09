@@ -3,13 +3,12 @@
 
 namespace calculator::Ast {
   UnaryOperation::UnaryOperation(UnaryOpType op, Ast::ExpressionPtr operand)
-      : operationType(op), operand(std::move(operand)) {
-  }
+      : operationType(op), operand(std::move(operand)) {}
 
   std::string UnaryOperation::GetOpSymbol() const {
     switch (operationType) {
       case UnaryOpType::Negate:
-        return "-";
+        return "Negate";
     }
   }
 
@@ -19,5 +18,15 @@ namespace calculator::Ast {
       case UnaryOpType::Negate:
         return -operandValue;
     }
+  }
+
+  std::vector<std::string> UnaryOperation::PrintDebug() const {
+    std::vector<std::string> lines;
+    lines.push_back("UnaryOperation(");
+    lines.push_back(GetOpSymbol());
+    for (const auto& line : operand->PrintDebug()) {
+      lines.push_back(line);
+    }
+    return lines;
   }
 }  // namespace calculator::Ast

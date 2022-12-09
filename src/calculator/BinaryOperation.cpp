@@ -2,21 +2,20 @@
 #include <cmath>
 
 namespace calculator::Ast {
-  BinaryOperation::BinaryOperation(BinaryOpType op) : operationType(op) {
-  }
+  BinaryOperation::BinaryOperation(BinaryOpType op) : operationType(op) {}
 
   std::string BinaryOperation::GetOpSymbol() const {
     switch (operationType) {
       case BinaryOpType::Add:
-        return "+";
+        return "Add";
       case BinaryOpType::Substract:
-        return "-";
+        return "Sub";
       case BinaryOpType::Multiply:
-        return "*";
+        return "Mult";
       case BinaryOpType::Divide:
-        return "/";
+        return "Div";
       case BinaryOpType::Exponent:
-        return "^";
+        return "Power";
     }
   }
 
@@ -35,5 +34,18 @@ namespace calculator::Ast {
       case BinaryOpType::Exponent:
         return std::pow(leftValue, rightValue);
     }
+  }
+
+  std::vector<std::string> BinaryOperation::PrintDebug() const {
+    std::vector<std::string> lines;
+    lines.push_back("BinaryOperation(");
+    for (const auto& line : lhs->PrintDebug()) {
+      lines.push_back("  " + line);
+    }
+    lines.push_back(GetOpSymbol());
+    for (const auto& line : rhs->PrintDebug()) {
+      lines.push_back("  " + line);
+    }
+    return lines;
   }
 }  // namespace calculator::Ast
