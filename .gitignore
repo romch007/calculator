@@ -12,3 +12,4 @@ CMakeLists.txt
 vsxmake*
 docs
 .vs
+compile_commands.json
