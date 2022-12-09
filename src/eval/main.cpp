@@ -2,7 +2,6 @@
 #include <cxxopts.hpp>
 #include <fstream>
 #include <iostream>
-#include <sstream>
 
 int main(int argc, char** argv) {
   cxxopts::Options options("eval", "eval for the calculator");

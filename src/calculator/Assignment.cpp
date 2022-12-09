@@ -21,6 +21,7 @@ namespace calculator::Ast {
     for (const auto& line : content->PrintDebug()) {
       lines.push_back(spacing(2) + line);
     }
+    lines.emplace_back(")");
     return lines;
   };
 }  // namespace calculator::Ast

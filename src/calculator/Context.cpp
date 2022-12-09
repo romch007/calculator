@@ -21,12 +21,9 @@ namespace calculator {
     if (tokens.size() <= 1) throw std::runtime_error("no token");
     Parser parser{};
     auto ast = parser.Parse(tokens);
-    if (m_debugMode) {
-      for (const auto& line : ast->PrintDebug()) {
-        m_outputStream << line << "\n";
-      }
-    }
-    if (ast) ast->Execute(*this);
+
+    if (m_debugMode) PrintAstDebug(ast);
+    ast->Execute(*this);
   }
 
   void Context::SetVariable(std::string variableName, double value,
@@ -51,5 +48,14 @@ namespace calculator {
 
   void Context::AddBuiltinConstant(std::string constantName, double value) {
     SetVariable(std::move(constantName), value, Ast::AssignmentType::Constant);
+  }
+
+  void Context::PrintAstDebug(const Ast::RootPtr& ast) {
+    auto separator = "------";
+    m_outputStream << separator << " AST dump " << separator << "\n";
+    for (const auto& line : ast->PrintDebug()) {
+      m_outputStream << line << "\n";
+    }
+    m_outputStream << separator << " end AST dump " << separator << "\n";
   }
 }  // namespace calculator

@@ -46,6 +46,7 @@ namespace calculator::Ast {
     for (const auto& line : rhs->PrintDebug()) {
       lines.push_back("  " + line);
     }
+    lines.emplace_back(")");
     return lines;
   }
 }  // namespace calculator::Ast

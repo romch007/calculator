@@ -6,9 +6,15 @@
 #include <calculator/Enums.hpp>
 #include <calculator/Prerequisites.hpp>
 #include <string>
+#include <memory>
 #include <unordered_map>
 
 namespace calculator {
+  namespace Ast {
+    class Root;
+    using RootPtr = std::unique_ptr<Root>;
+  }
+
   CALCULATOR_API void Evaluate(const std::string& input,
                                std::ostream& outputStream);
 
@@ -68,6 +74,7 @@ namespace calculator {
     bool m_debugMode;
 
     void AddBuiltinConstant(std::string constantName, double value);
+    void PrintAstDebug(const Ast::RootPtr& ast);
   };
 }  // namespace calculator
 
