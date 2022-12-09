@@ -47,6 +47,9 @@ namespace calculator {
     do {
       const Token& token = Peek();
       switch (token.type) {
+        case TokenType::Newline:
+          Advance();
+          break;
         case TokenType::Const:
         case TokenType::Let:
           rootNode->AddStatement(ParseAssignment());
@@ -56,12 +59,7 @@ namespace calculator {
           break;
         }
       }
-    } while (Advance().type == TokenType::Newline);
-
-    m_context->tokenIndex--;
-    const Token& nextToken = Peek();
-    if (nextToken.type != TokenType::EndOfStream)
-      throw std::runtime_error("extra inputs at end of stream");
+    } while (Peek().type != TokenType::EndOfStream);
 
     return rootNode;
   }
