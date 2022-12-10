@@ -40,11 +40,11 @@ namespace calculator::Ast {
     std::vector<std::string> lines;
     lines.emplace_back("BinaryOperation(");
     for (const auto& line : lhs->PrintDebug()) {
-      lines.push_back("  " + line);
+      lines.push_back(spacing(2)  + line);
     }
-    lines.push_back(GetOpSymbol());
+    lines.push_back(spacing() + GetOpSymbol());
     for (const auto& line : rhs->PrintDebug()) {
-      lines.push_back("  " + line);
+      lines.push_back(spacing(2) + line);
     }
     lines.emplace_back(")");
     return lines;

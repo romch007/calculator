@@ -6,6 +6,6 @@ namespace calculator::Ast {
   }
 
   std::vector<std::string> Number::PrintDebug() const {
-    return {std::to_string(value)};
+    return {"Number(" + std::to_string(value) + ")"};
   };
 }  // namespace calculator::Ast

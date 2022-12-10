@@ -28,13 +28,13 @@ namespace calculator::Ast {
     std::vector<std::string> lines;
     lines.emplace_back("FunctionCall(");
     // lines.push_back(std::string(functionType)); TODO
-    lines.emplace_back("with arguments");
+    lines.emplace_back(spacing() + "with arguments");
     for (const auto& argument : arguments) {
       for (const auto& line : argument->PrintDebug()) {
-        lines.push_back("  " + line);
+        lines.push_back(spacing(2) + line);
       }
-      lines.emplace_back(",");
     }
+    lines.emplace_back(")");
     return lines;
   }
 }  // namespace calculator::Ast
