@@ -9,6 +9,7 @@ if has_config("eval") then
 
     target("eval")
         set_kind("binary")
+        set_basename("calculator-eval")
         set_group("Executables")
         add_deps("calculator")
         add_packages("cxxopts")
