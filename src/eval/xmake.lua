@@ -14,4 +14,6 @@ if has_config("eval") then
         add_deps("calculator")
         add_packages("cxxopts")
         add_files("main.cpp")
+
+        add_installfiles("../../(examples/*.calc)")
 end

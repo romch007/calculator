@@ -7,8 +7,6 @@ set_targetdir("./build/$(plat)_$(arch)_$(mode)")
 
 add_requires("fast_float", "fmt")
 
-add_headerfiles("examples/*.calc")
-
 if is_plat("wasm") then
     add_defines("__WASM__")
 end
