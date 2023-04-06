@@ -1,8 +1,8 @@
-# Comment
-let test = 999
-# Comment1
-const result = (6 + 4) * sin(PI) - test
-test = 6
-# Comment2
-result
-PI * test
+const YES = PI * 2
+sin(YES)
+cos(YES * 3)
+YES^3
+YES - 3
+let u = YES/2
+u
+u * 6
