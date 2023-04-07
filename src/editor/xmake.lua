@@ -8,7 +8,7 @@ if has_config("editor") then
     target("editor")
         set_kind("binary")
         set_group("Executables")
-        add_rules("qt.quickapp")
+        add_rules("qt.console")
         add_frameworks("QtCore", "QtGui", "QtWidgets")
         add_deps("calculator")
         add_files("**.cpp")
