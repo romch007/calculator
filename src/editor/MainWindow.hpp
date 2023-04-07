@@ -37,6 +37,7 @@ class MainWindow : public QMainWindow {
   QAction* m_quitAction;
 
   QString m_openedFile;
+  QFont m_monospaceFont;
 };
 
 #endif

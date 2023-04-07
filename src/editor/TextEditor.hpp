@@ -11,6 +11,9 @@ class TextEditor : public QTextEdit {
 
  public:
   TextEditor();
+
+ private:
+  void keyPressEvent(QKeyEvent* event) override;
 };
 
 #endif

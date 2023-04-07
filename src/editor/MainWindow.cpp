@@ -1,27 +1,32 @@
 #include <MainWindow.hpp>
+#include <QApplication>
 #include <QFileDialog>
+#include <QFontDatabase>
 #include <QStyle>
 #include <QTextStream>
-#include <QApplication>
 #include <calculator/Context.hpp>
 
-MainWindow::MainWindow() {
+MainWindow::MainWindow() : m_monospaceFont("Monospace") {
   m_layout = new QVBoxLayout;
   m_textEditor = new TextEditor;
   m_output = new QTextEdit;
 
   setupActions();
 
+  m_monospaceFont = QFontDatabase::systemFont(QFontDatabase::FixedFont);
+
   m_toolbar = addToolBar("Tools");
-  m_toolbar->insertActions(nullptr, {m_openAction, m_saveAction, m_runAction, m_quitAction});
+  m_toolbar->insertActions(
+      nullptr, {m_openAction, m_saveAction, m_runAction, m_quitAction});
 
   setWindowTitle("Calculator");
   resize(1280, 720);
 
-  m_textEditor->setFontFamily("Hack");
-  m_output->setFontFamily("Hack");
-
   m_output->setDisabled(true);
+
+  m_monospaceFont.setStyleHint(QFont::TypeWriter);
+  m_output->setFont(m_monospaceFont);
+  m_textEditor->setFont(m_monospaceFont);
 
   m_layout->addWidget(m_textEditor);
   m_layout->addWidget(m_output);
@@ -31,6 +36,7 @@ MainWindow::MainWindow() {
 
   setCentralWidget(layout_container);
 }
+
 void MainWindow::setupActions() {
   m_runAction = new QAction("Run", this);
   connect(m_runAction, &QAction::triggered, this, &MainWindow::execute);

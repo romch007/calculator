@@ -1,7 +1,9 @@
 #include <QFontDatabase>
+#include <QKeySequence>
 #include <TextEditor.hpp>
 
-TextEditor::TextEditor() {
-  const QFont fixedFont = QFontDatabase::systemFont(QFontDatabase::FixedFont);
-  setFont(fixedFont);
+TextEditor::TextEditor() = default;
+
+void TextEditor::keyPressEvent(QKeyEvent* event) {
+  QTextEdit::keyPressEvent(event);
 }
