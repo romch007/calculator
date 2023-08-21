@@ -5,6 +5,7 @@
 #include <QStyle>
 #include <QTextStream>
 #include <calculator/Context.hpp>
+#include <sstream>
 
 MainWindow::MainWindow() : m_monospaceFont("Monospace") {
   m_layout = new QVBoxLayout;
